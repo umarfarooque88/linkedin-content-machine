@@ -117,15 +117,19 @@ No API needed, no credits needed, works with any model.
 - Status: Hit-or-miss results. Deferred — text-only posts work fine on LinkedIn for now.
 - Decision: Skip images until we find a reliable solution (Canva API, text-overlay templates, etc.)
 
-## Known Weaknesses (To Fix Next)
+## Original 9 Weaknesses — Status
 
-1. ~~No feedback loop~~ → ✅ **FIXED** — Engagement tracker built (skill 05), auto-calibrates Post Generator
-2. **Research is shallow** — Grabbing headlines only, not reading articles/comments where real conversations are.
-3. **Personal experience feels generic** — Needs more specific, unique-to-Umar details.
-4. **No connection analysis** — Don't know what Umar's 1700 connections actually engage with.
-5. **No Google Sheets integration** — Still manual copy-paste, should be automated.
-6. **No topic calendar** — Risk of repeating themes or having gaps.
-7. **Style profile is "initial"** — Needs calibration after several days of posts.
+| # | Problem | Status | Details |
+|---|---------|--------|---------|
+| 1 | **No feedback loop — flying blind** | ✅ FIXED | Engagement tracker (skill 05) built. Multi-dimensional analysis tracks engagement by pillar, hook type, word count, hashtag set, day of week, topic category. System auto-calibrates Post Generator using confidence-weighted calibration. Append-only JSONL database + rolling analysis with confidence levels. Full implementation: `skills/05-engagement-tracker.md`, `data/engagement/`. See HANDOVER.md "The Engagement Feedback Loop" section for complete details. |
+| 2 | **Research is shallow** | Open | Grabbing headlines only, not reading articles/comments where real conversations are. |
+| 3 | **Personal experience feels generic** | Open | Needs more specific, unique-to-Umar details. |
+| 4 | **No connection analysis** | Open | Don't know what Umar's 1700 connections actually engage with. |
+| 5 | **Image pipeline is dead weight** | Open | Pollinations gives hit-or-miss results. Deferred. |
+| 6 | **No Google Sheets integration** | Open | Still manual copy-paste. No API integration yet. |
+| 7 | **No topic calendar** | Open | Risk of repeating themes or having gaps. |
+| 8 | **No hashtag strategy** | ✅ Part of #1 | Handled by engagement tracker — analyzes hashtag set performance, recommends preferred/banned sets. |
+| 9 | **No consistency between days** | ✅ Part of #1 | Handled by calibration reports that run every 10 posts. |
 
 ## Data Sources
 
