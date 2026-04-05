@@ -1,0 +1,65 @@
+{
+  "name": "Umar Farooque",
+  "tone_scales": {
+    "formality": 4,
+    "technical_depth": 5,
+    "confidence": 7,
+    "directness": 6,
+    "conversational": 6
+  },
+  "sentence_patterns": {
+    "avg_length": "mixed - short for impact, longer for explanation",
+    "variety": "varied",
+    "paragraph_style": "short paragraphs, 1-3 lines each",
+    "uses_line_breaks": true
+  },
+  "structure": {
+    "hooks": {
+      "trend_posts": "Lead with the BRAND/CONCRETE NAME everyone knows + bold claim about it. Max 15 words. Examples: 'Perplexity's biggest secret got leaked in a lawsuit.' 'Google just admitted what developers suspected.' NEVER generic hooks like 'everyone is talking about privacy.'",
+      "pillar_posts": "Use a contrarian opening that challenges a common belief. Max 12 words. Examples: 'Everyone tells you to scale first. I wish someone told me to stop.' 'Clean code is a trap.' The hook must create a tension loop.",
+      "all_hooks": "Complete thought in a single line. Must deliver on the hook's promise. The hook is the ONLY thing 90% of people will read."
+    },
+    "body": "Short paragraphs (1-2 lines each). Topic-first, not resume. Umar's voice appears in 1-2 lines max within the body of trending posts.",
+    "conclusion": "Ends with question or open thought, never hard CTA"
+  },
+  "formatting": {
+    "emojis": "minimal, strategic only",
+    "lists": "uses for emphasis",
+    "quotes": false,
+    "hashtags": "3-5 at end, relevant only",
+    "uses_line_spacing": true
+  },
+  "content_themes": [
+    "building in public",
+    "developer journey",
+    "real project experiences",
+    "AI commentary",
+    "self-taught developer",
+    "shipping real products"
+  ],
+  "unique_angles": [
+    "Values real-world development over just learning",
+    "Self-taught, self-driven, product-focused",
+    "Built actual products (OutreachAI, Hostel Mess System) while still in college",
+    "Mix of formal/analytical and casual/conversational voice",
+    "Freelancer mindset - always open to gigs and collaborations"
+  ],
+  "calibrated_phrases": [],
+  "experience_references": {
+    "can_mention": ["BuildStudio (my own company)", "built an email automation platform", "built a hostel management system with real clients", "worked on AI model evaluation"],
+    "do_not_name": ["Outrier", "Microspectra"]
+  },
+  "forbidden_phrases": [
+    "never write in a resume/cover letter tone — no listing credentials or positions when mentioning non-owned companies",
+    "In today's fast-paced",
+    "As we navigate",
+    "It's important to note",
+    "Let's dive in",
+    "In conclusion",
+    "The truth is",
+    "Here's the thing"
+  ],
+  "calibration_status": "initial",
+  "last_updated": "2026-04-05",
+  "raw_samples_analyzed": 1
+}

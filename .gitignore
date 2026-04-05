@@ -1,0 +1,13 @@
+# Generated media
+data/media/*
+!data/media/.gitkeep
+
+# Dataset (personal data)
+Dataset/
+
+# Claude session files
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
