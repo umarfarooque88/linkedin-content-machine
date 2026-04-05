@@ -4,7 +4,7 @@ Generate 2 daily LinkedIn posts combining Umar's style voice, content pillars, a
 
 ## Requirements
 
-- Each post must be 150-300 words (LinkedIn optimal length)
+- Each post must be 80-150 words MAXIMUM (LinkedIn optimal length)
 - Each post must use the exact writing style from `config/style-profile.json`
 - At least 1 post per day must be trend-anchored (based on today's research)
 - Posts should be structured: hook → body → soft CTA
@@ -18,9 +18,24 @@ Generate 2 daily LinkedIn posts combining Umar's style voice, content pillars, a
 
 ## Process
 
+### Step 0: Read Calibration Data (if available)
+
+Read `data/engagement/engagement-log.json` if it exists. Check `total_posts_analyzed` and `confidence_level`:
+
+- If 0-10 posts (confidence: "no_data"): ignore calibration, use defaults
+- If 11+ posts: apply calibration settings from `calibration_settings` section:
+  - **pillar_weights**: Weight pillar rotation probabilities (keep minimum 0.1 per pillar for variety)
+  - **post_word_count_min / max**: Use instead of hardcoded 80-150
+  - **hook_type_preference**: If set, use this hook type for both posts
+  - **preferred_hashtags**: If non-empty, prefer these over others when choosing hashtags
+  - **banned_hashtags**: Do NOT use these hashtags
+  - **preferred_topic_categories**: When selecting research topics, prefer these categories
+
 ### Step 1: Read Inputs
 - Read `config/style-profile.json` for voice constraints and unique angles
+- Read `config/style-profile.json` → `calibration` section for additional learned parameters
 - Read today's research: `data/research/YYYY-MM-DD-topics.json`
+- If calibration data exists: apply all calibration_settings overrides from Step 0
 
 ### Step 2: Generate POST 1 (TREND-ANCHORED)
 Pick the hottest (most urgent, most interesting) topic from today's research.
@@ -66,27 +81,52 @@ IMAGE PROMPT: [80+ word detailed description of a specific, concrete visual. NO 
 ```
 
 ### Step 3: Generate POST 2 (PILLAR-DRIVEN)
-Rotate through pillars daily: Day1=The Build, Day2=The Lesson, Day3=The Person, Day4=The Take.
+
+**Pillar selection uses calibration data if available:**
+- Read `calibration_settings.pillar_weights` from engagement-log.json
+- Weight pillar rotation accordingly (min 0.1 per pillar for variety)
+- If no calibration or < 11 posts: use equal rotation (The Build → The Lesson → The Person → The Take)
 
 Same structure as POST 1, but driven by the pillar topic rather than trends.
 
+**Hook type calibration:**
+- If `hook_type_preference` is set in calibration_settings, use that hook type
+- Otherwise use contrarian for pillar posts (default)
+
+**Word count calibration:**
+- Use `calibration_settings.post_word_count_min` and `post_word_count_max` if available
+- Default to 80-150 if no calibration
+
+**Hashtag calibration:**
+- Prefer hashtags from `calibration_settings.preferred_hashtags`
+- Avoid hashtags from `calibration_settings.banned_hashtags`
+
+**Topic selection:**
+- If `calibration_settings.preferred_topic_categories` has entries, lean toward posts matching those themes
+- For "The Build": focus on system architecture, email platforms, data flow design
+- For "The Lesson": focus on self-taught journey, mistakes, learning curves
+- For "The Person": focus on career decisions, college life, building in public
+- For "The Take": use today's hottest research topic
+
 Draw from Umar's real experiences:
-- OutreachAI (the cold email platform he built)
-- Hostel Mess Management System (used by real clients)
-- BuildStudio (current full-stack role)
-- Outrier (AI model evaluation work)
-- Being self-taught and building in college
+- Built an email automation platform (cold email system)
+- Built a hostel management system with real clients
+- Building BuildStudio (my own company)
+- Worked on AI model evaluation
+- Self-taught developer in college
 - Freelance and project experience
 - Non-conventional path to development
 
 ### Step 4: Validate Each Post
-- [ ] Word count 150-300
-- [ ] No banned AI phrases
+- [ ] Word count within bounds (80-150, or calibrated range)
+- [ ] No banned AI phrases (from style-profile.json forbidden_phrases)
 - [ ] Matches style profile tone
 - [ ] Has clear hook → body → CTA structure
-- [ ] Image prompt is 50+ words and detailed
+- [ ] Image prompt is 80+ words and detailed
 - [ ] Feels like a real human wrote it
 - [ ] Could it be anyone's post, or does it sound like Umar specifically?
+- [ ] Hook hook_type matches calibration preference (if set and confidence >= "good")
+- [ ] Hashtags don't include anything from banned_hashtags (if calibration available)
 
 ### Step 5: Write Output to `data/posts/YYYY-MM-DD-posts.json`
 

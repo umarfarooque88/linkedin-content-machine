@@ -76,7 +76,21 @@ Copy the formatted output above into Google Sheets.
 Upload images to Google Drive and paste Drive link in the Media column.
 ```
 
-### Step 7: Suggest Tomorrow's Pillar Rotation
+### Step 7: Add Engagement Placeholder to Post JSON
+
+For each post in `data/posts/YYYY-MM-DD-posts.json`, add:
+
+```json
+"engagement": {
+  "likes": 0,
+  "comments": 0,
+  "shares": 0,
+  "scraped_at": null,
+  "status": "pending"
+}
+```
+
+### Step 8: Suggest Tomorrow's Pillar Rotation
 
 Based on what pillars were used today, suggest tomorrow:
 
@@ -86,10 +100,26 @@ POST 1: The Take (trend-anchored — always)
 POST 2: [next pillar in rotation]
 ```
 
+### Step 9: Flag Pending Engagement Entries
+
+Check `data/engagement/posts-db.jsonl` — which posts are missing engagement data?
+
+Look at `data/posts/` directory and find posts older than 24 hours that haven't been tracked:
+- For each such post, display: `[POST ID] — [Date] — [Pillar] — Status: PENDING (24h+ elapsed)`
+
+If there are pending posts, remind the user:
+```
+Reminder: You have XX posts pending engagement entry.
+Run: "track engagement for <date>" to enter likes, comments, shares.
+This feeds the learning engine and calibrates tomorrow's output.
+```
+
 ## File Management
 
 - Never delete old post files
+- Never delete old engagement entries (append-only)
 - Images are stored as PNGs in `data/media/`
 - Posts are stored as JSON in `data/posts/`
 - Research is stored as JSON in `data/research/`
+- Engagement data is in `data/engagement/`
 - All files use YYYY-MM-DD naming convention for easy sorting

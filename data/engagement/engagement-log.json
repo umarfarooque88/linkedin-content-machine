@@ -1,0 +1,53 @@
+{
+  "total_posts_analyzed": 0,
+  "last_updated": null,
+  "confidence_level": "no_data",
+  "by_pillar": {
+    "The Take": { "count": 0, "avg_likes": 0, "avg_comments": 0, "avg_engagement": 0, "best_post_id": null, "worst_post_id": null },
+    "The Build": { "count": 0, "avg_likes": 0, "avg_comments": 0, "avg_engagement": 0, "best_post_id": null, "worst_post_id": null },
+    "The Lesson": { "count": 0, "avg_likes": 0, "avg_comments": 0, "avg_engagement": 0, "best_post_id": null, "worst_post_id": null },
+    "The Person": { "count": 0, "avg_likes": 0, "avg_comments": 0, "avg_engagement": 0, "best_post_id": null, "worst_post_id": null }
+  },
+  "by_hook_type": {
+    "brand_name_claim": { "count": 0, "avg_engagement": 0 },
+    "contrarian": { "count": 0, "avg_engagement": 0 },
+    "bold_statement": { "count": 0, "avg_engagement": 0 },
+    "personal_story": { "count": 0, "avg_engagement": 0 },
+    "question": { "count": 0, "avg_engagement": 0 }
+  },
+  "by_word_count_bucket": {
+    "under_100": { "count": 0, "avg_engagement": 0 },
+    "100_to_120": { "count": 0, "avg_engagement": 0 },
+    "120_to_150": { "count": 0, "avg_engagement": 0 },
+    "over_150": { "count": 0, "avg_engagement": 0 }
+  },
+  "by_hashtag_set": {},
+  "by_day_of_week": {
+    "Monday": { "count": 0, "avg_engagement": 0 },
+    "Tuesday": { "count": 0, "avg_engagement": 0 },
+    "Wednesday": { "count": 0, "avg_engagement": 0 },
+    "Thursday": { "count": 0, "avg_engagement": 0 },
+    "Friday": { "count": 0, "avg_engagement": 0 },
+    "Saturday": { "count": 0, "avg_engagement": 0 },
+    "Sunday": { "count": 0, "avg_engagement": 0 }
+  },
+  "by_topic_category": {},
+  "trend_vs_evergreen": {
+    "trend": { "count": 0, "avg_engagement": 0 },
+    "evergreen": { "count": 0, "avg_engagement": 0 }
+  },
+  "top_performing_posts": [],
+  "bottom_performing_posts": [],
+  "recommendations": [],
+  "calibration_settings": {
+    "post_word_count_max": 150,
+    "post_word_count_min": 80,
+    "daily_trend_posts": 1,
+    "daily_pillar_posts": 1,
+    "hook_type_preference": null,
+    "pillar_weights": { "The Take": 0.25, "The Build": 0.25, "The Lesson": 0.25, "The Person": 0.25 },
+    "banned_hashtags": [],
+    "preferred_hashtags": [],
+    "preferred_topic_categories": []
+  }
+}

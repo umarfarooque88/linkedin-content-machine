@@ -61,5 +61,19 @@
   ],
   "calibration_status": "initial",
   "last_updated": "2026-04-05",
-  "raw_samples_analyzed": 1
+  "raw_samples_analyzed": 1,
+  "calibration": {
+    "last_calibrated_post_count": 0,
+    "top_performing_dimensions": {
+      "pillar": null,
+      "hook_type": null,
+      "word_bucket": null,
+      "day_of_week": null
+    },
+    "hook_performance": {},
+    "best_performing_topics": [],
+    "worst_performing_topics": [],
+    "optimal_word_length": { "min": 80, "max": 150 },
+    "preferred_hashtag_sets": []
+  }
 }

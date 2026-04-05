@@ -1,7 +1,7 @@
 # LinkedIn Content Machine — Handover Document
 
 > Last updated: 2026-04-05
-> Status: **Running** — Daily posts being generated, ready for LinkedIn
+> Status: **Running with Feedback Loop** — Engagement tracking active, system self-calibrating
 > Decision: Approach C (Evergreen + Trend Mix) — 2 posts daily
 
 ---
@@ -65,14 +65,15 @@ Umar has 1700+ connections but near-zero engagement (3-4 likes). No time to rese
 
 Daily rotation through pillars. Post 1 is always trend-anchored.
 
-## 4 Custom Skills
+## 5 Custom Skills
 
 | Order | Skill | Purpose | Input | Output |
 |-------|-------|---------|-------|--------|
 | 1 | Style Analyzer | Extract Umar's voice profile | Writing samples, interview | `config/style-profile.json` |
 | 2 | Research Engine | Daily AI/tech trend detection | HN "New" feed, The Verge AI | `data/research/YYYY-MM-DD-topics.json` |
 | 3 | Post Generator | Write 2 daily posts with viral hooks | Style + research + pillar | `data/posts/YYYY-MM-DD-posts.json` |
-| 4 | Content Scheduler | Store + track in Google Sheets | Today's posts | Formatted for Sheets paste |
+| 4 | Content Scheduler | Store + track in Google Sheets, flag pending engagement | Today's posts | Formatted for Sheets paste |
+| 5 | Engagement Tracker | Track, analyze, auto-calibrate the system | Manual likes/comments input | `data/engagement/engagement-log.json` |
 
 ## Key Learnings (Calibrated from actual post runs)
 
@@ -118,7 +119,7 @@ No API needed, no credits needed, works with any model.
 
 ## Known Weaknesses (To Fix Next)
 
-1. **No feedback loop** — We generate but never learn what works. Need engagement tracking.
+1. ~~No feedback loop~~ → ✅ **FIXED** — Engagement tracker built (skill 05), auto-calibrates Post Generator
 2. **Research is shallow** — Grabbing headlines only, not reading articles/comments where real conversations are.
 3. **Personal experience feels generic** — Needs more specific, unique-to-Umar details.
 4. **No connection analysis** — Don't know what Umar's 1700 connections actually engage with.
@@ -146,7 +147,11 @@ No API needed, no credits needed, works with any model.
 ├── data/
 │   ├── research/               # Daily research (YYYY-MM-DD-topics.json)
 │   ├── posts/                  # Daily posts (YYYY-MM-DD-posts.json)
-│   └── media/                  # Generated images (deferred)
+│   ├── media/                  # Generated images (deferred)
+│   └── engagement/             # Feedback loop data
+│       ├── posts-db.jsonl      # Append-only post fingerprints + engagement
+│       ├── engagement-log.json # Multi-dimensional analysis + calibration
+│       └── calibration-reports/ # Periodic calibration reports
 ├── docs/
 │   └── superpowers/
 │       ├── plans/              # Implementation plans
