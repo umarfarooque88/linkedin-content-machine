@@ -122,7 +122,7 @@ No API needed, no credits needed, works with any model.
 | # | Problem | Status | Details |
 |---|---------|--------|---------|
 | 1 | **No feedback loop — flying blind** | ✅ FIXED | Engagement tracker (skill 05) built. Multi-dimensional analysis tracks engagement by pillar, hook type, word count, hashtag set, day of week, topic category. System auto-calibrates Post Generator using confidence-weighted calibration. Append-only JSONL database + rolling analysis with confidence levels. Full implementation: `skills/05-engagement-tracker.md`, `data/engagement/`. See HANDOVER.md "The Engagement Feedback Loop" section for complete details. |
-| 2 | **Research is shallow** | Open | Grabbing headlines only, not reading articles/comments where real conversations are. |
+| 2 | **Research is shallow** | ✅ FIXED | Deep research engine upgraded. Three-phase flow: headline scan → article extraction + comment mining → two-part output (enriched JSON + deep brief markdown). Selects #1 hot topic, reads full article body, mines top 20 HN comments for sentiment/counter-arguments/post angles. For non-HN sources: searches HN for related discussions. Fallback rules for empty/comment-sparse topics. Post Generator now consumes deep brief when available. Full changes: `skills/02-research-engine.md` (Phase 2 + 3 added), `skills/03-post-generator.md` (deep brief integration). Design: `docs/superpowers/specs/2026-04-05-deep-research-design.md`. |
 | 3 | **Personal experience feels generic** | Open | Needs more specific, unique-to-Umar details. |
 | 4 | **No connection analysis** | Open | Don't know what Umar's 1700 connections actually engage with. |
 | 5 | **Image pipeline is dead weight** | Open | Pollinations gives hit-or-miss results. Deferred. |

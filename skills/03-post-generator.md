@@ -35,10 +35,24 @@ Read `data/engagement/engagement-log.json` if it exists. Check `total_posts_anal
 - Read `config/style-profile.json` for voice constraints and unique angles
 - Read `config/style-profile.json` → `calibration` section for additional learned parameters
 - Read today's research: `data/research/YYYY-MM-DD-topics.json`
+- Read today's deep brief if it exists: `data/research/YYYY-MM-DD-deep-brief.md`
 - If calibration data exists: apply all calibration_settings overrides from Step 0
+
+**Deep brief priority:** If a deep brief exists for today's date, the #1 hot topic in the research file will have enriched context (`article_summary` + `comment_analysis`). The Post Generator MUST use the deep brief as the PRIMARY context for POST 1. This means:
+- Use specific data points and statistics from the article as evidence in the post body
+- Use direct quotes from sources to add credibility
+- Reference the community debate/consensus found in HN comments
+- Use the counter-argument from comments to avoid naive one-sided takes
+- Consider the "gaps in conversation" for a unique angle nobody else is taking
 
 ### Step 2: Generate POST 1 (TREND-ANCHORED)
 Pick the hottest (most urgent, most interesting) topic from today's research.
+
+**Deep Brief Integration (if available):** When a deep brief exists, use it to ground your post in real evidence, not generic takes. Specifically:
+- Lead with a concrete detail from the article (a number, a quote, a specific claim), not a vague "this just happened"
+- In the body, reference the community reaction: "Engineers on HN are split between X and Y" or "The pushback is coming from people who point out Z"
+- Use the counter-argument to create tension: "But the other side argues that..."
+- Reference the "gaps in conversation" for a unique angle that nobody else on LinkedIn is taking
 
 ## HOOK RULES (CRITICAL — this determines whether anyone reads anything else)
 
@@ -138,6 +152,7 @@ Draw from Umar's real experiences:
       "pillar": "The Take",
       "is_trend_anchored": true,
       "topic_source": "topic headline from research",
+      "used_deep_brief": true,
       "hook": "The hook line",
       "body": "Everything after hook and before soft CTA",
       "soft_cta": "The closing question/thought",
@@ -151,6 +166,7 @@ Draw from Umar's real experiences:
       "pillar": "The Build",
       "is_trend_anchored": false,
       "topic_source": "pillar rotation",
+      "used_deep_brief": false,
       "hook": "The hook line",
       "body": "Everything after hook and before soft CTA",
       "soft_cta": "The closing question/thought",

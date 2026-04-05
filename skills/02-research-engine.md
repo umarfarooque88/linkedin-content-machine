@@ -60,18 +60,131 @@ Scan daily AI/tech trends and output 3-5 trending post topics with unique angles
 }
 ```
 
-5. Output to: `data/research/YYYY-MM-DD-topics.json` (use today's date)
+---
+
+## Phase 2: Deep Dive (after selecting the #1 hottest topic)
+
+After ranking all topics from Phase 1, identify the #1 hottest topic (highest urgency = "hot", most relevant to Umar's audience, strongest angle). This topic gets the full deep dive treatment.
+
+### Step 2a: Extract Article Content
+
+Navigate to the source URL of the #1 topic and extract the full article content.
+
+```
+Navigate to: [the source URL from the topic's source_urls array]
+Extract: markdown format
+```
+
+From the full article, extract:
+- **Key argument**: What is the main point the article is making? (1-2 sentences)
+- **Data points**: All concrete statistics, numbers, metrics mentioned
+- **Key quotes**: Direct quotes from researchers, executives, sources (exact quotes only)
+- **Technical details**: Specific architecture, methodology, or implementation details
+
+### Step 2b: Mine HN Comments
+
+Navigate to the HN comments page for this specific story.
+
+- If the story originated from HN: use the story's comment page directly
+- If the story originated from The Verge or another source: search HN for the product/company name to find related discussions
+
+```
+Navigate to: [HN comments URL for the story] -- OR --
+Navigate to: https://news.ycombinator.com/ (search for the topic)
+Extract: markdown format — top 20 comments
+```
+
+From the comments, extract:
+- **Overall sentiment**: positive, negative, divided (with 1-sentence explanation)
+- **Top concern**: What commenters are most worried/excited about (the main debate point)
+- **Best counter-argument**: The smartest opposing view or strongest pushback found in comments
+- **Notable quotes**: 3-5 comment quotes with @username attribution
+- **Gaps in the conversation**: What nobody is talking about but should be
+- **Engineering context**: Any practical insights, experiences, or technical details shared by commenters
+
+### Step 2c: Post Angles
+
+Based on the article + comments, identify 3 specific post angles Umar could write about:
+- **Angle 1**: The main take (article-backed, with data points and quotes)
+- **Angle 2**: The contrarian take (informed by the counter-arguments found in comments)
+- **Angle 3**: The personal experience connection (connect to Umar's actual projects/experience)
+
+### Fallback Rules
+
+- If the article URL fails to load (paywall, 404, error): use the headline + existing knowledge only, note in the brief as "Article extraction failed — using headline context"
+- If HN has fewer than 5 comments on the topic: note in the brief as "Thin discussion — limited comment data", skip comment analysis section
+- If no HN discussion exists at all: complete the article extraction, skip comment mining, note in the brief as "No HN discussion found"
+
+5. Output Phase 3 — two-part output:
+
+### Part A: Enriched topics.json
+
+Output to: `data/research/YYYY-MM-DD-topics.json` (use today's date)
+
+The #1 topic (hot topic) gets enriched with `article_summary` and `comment_analysis` fields. Other topics remain as-is from the research object template.
 
 ```json
 {
   "date": "YYYY-MM-DD",
   "topics": [
-    // Array of 3-5 topic objects
+    {
+      "topic": "hot topic headline",
+      "pillar": "The Take",
+      "why_its_hot": "1-2 sentences",
+      "unique_angle": "Umar's specific take",
+      "suggested_hook": "A specific hook line",
+      "source_urls": ["url1", "url2"],
+      "urgency": "hot | warm | evergreen",
+      "article_summary": "1-2 sentence key argument",
+      "comment_analysis": {
+        "sentiment": "overall mood summary",
+        "top_concern": "main debate point",
+        "counter_argument": "best opposing view",
+        "notable_quotes": ["quote 1 - @user", "quote 2 - @user"]
+      }
+    },
+    {
+      // Standard topic object (no enrichment)
+    }
   ],
   "evergreen_fallback": false,
-  "search_queries_used": ["list of actual queries run"],
-  "notes": "any context about today's AI landscape"
+  "search_queries_used": ["list of actual queries"],
+  "notes": "context about today's AI landscape",
+  "deep_brief_generated": true
 }
+```
+
+### Part B: Deep Brief Markdown
+
+Output to: `data/research/YYYY-MM-DD-deep-brief.md`
+
+```markdown
+# Deep Brief: YYYY-MM-DD — [Topic Headline]
+
+## Article Summary
+- **Source**: [The Verge | HN] — [URL]
+- **Key argument**: [1-2 sentences]
+- **Data points**:
+  - [concrete stat 1]
+  - [concrete stat 2]
+- **Key quotes**:
+  - "[direct quote 1]"
+  - "[direct quote 2]"
+- **Umar's angle**: [why this connects to his experience]
+
+## HN Comment Sentiment (Top 20)
+- **Overall mood**: [positive/negative/divided — 1 sentence]
+- **Top concern**: [what commenters are most worried/excited about]
+- **Best counter-argument**: [smartest opposing view from comments]
+- **Notable quotes**:
+  - "[commenter quote 1]" — @username
+  - "[commenter quote 2]" — @username
+- **Gaps in the conversation**: [what nobody is talking about but should be]
+
+## Post Angles
+- Angle 1: [specific take Umar could write about]
+- Angle 2: [alternative contrarian take]
+- Angle 3: [personal experience connection]
 ```
 
 6. If research finds nothing sufficiently trending (all topics are stale or irrelevant):
@@ -86,11 +199,19 @@ Scan daily AI/tech trends and output 3-5 trending post topics with unique angles
 Daily Research Report: YYYY-MM-DD
 ================================
 
-Topic                    | Pillar     | Urgency
--------------------------|------------|----------
-[topic 1]                | [pillar]   | [hot/warm/evergreen]
-[topic 2]                | [pillar]   | [hot/warm/evergreen]
-...
+Topic                    | Pillar     | Urgency   | Deep Brief
+-------------------------|------------|-----------|------------
+[topic 1 - HOT]          | [pillar]   | [hot]     | ✓ Generated
+[topic 2]                | [pillar]   | [warm]    | —
+[topic 3]                | [pillar]   | [evergreen]| —
+
+Article: [source] — Key argument summarized
+Comments: [N] HN comments analyzed — Overall mood: [sentiment]
+Best counter-argument: [1 sentence]
+
+Files written:
+  data/research/YYYY-MM-DD-topics.json (enriched with article/comment context)
+  data/research/YYYY-MM-DD-deep-brief.md (full extraction for post generation)
 ```
 
 ## Constraints
