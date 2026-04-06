@@ -229,3 +229,188 @@ Files written:
 - Unique angles must leverage Umar's actual experience
 - Must avoid controversial topics that could hurt brand (politics, non-tech controversy)
 - Never suggest reposting someone else's exact opinion — always a unique angle
+
+---
+
+## Phase 4: Network Pattern Mining (daily, automated, 3 active profiles per day)
+
+After generating today's research topics and deep brief, the system mines network patterns from Umar's connections.
+
+### Step 4a: Initialize Mining Queue
+
+Read `data/network/network-profiles.json` to get the current mining state.
+Read `Dataset/Basic_LinkedInDataExport_04-05-2026/Connections.csv` for the full connection list.
+
+**Selection algorithm:**
+
+1. Sort connections by: (1) has company and/or role filled in first, (2) most recently connected first
+2. Skip connections where `status` is already "inactive" in the profiles array
+3. Skip connections mined in the last 7 days (check `mined_at` date)
+4. Pick the next 3 connections that haven't been mined yet OR re-mine connections whose `mined_at` is more than 7 days old
+
+For each of the 3 selected connections, proceed to extraction.
+
+### Step 4b: Extract Post Data from Each Profile
+
+For each selected connection:
+
+**Navigate to their LinkedIn profile:**
+```
+Navigate to: [connection's LinkedIn URL from Connections.csv]
+Extract: markdown format
+```
+
+**From the extraction, identify the connection's recent activity:**
+- Look for their recent posts in their Activity section
+- Note: LinkedIn profiles may show limited posts without deep scrolling. Extract what is visible.
+
+**For each post found, extract:**
+- Date of the post
+- Topic in 1-3 words from the post headline/body
+- Engagement numbers (likes, comments) visible on the post card
+- Format: text, text + image, video, carousel
+- Infer hook style: contrarian, personal story, announcement, question, or bold claim
+- Estimate word_count_bucket: short (<100), medium (100-300), long (300+)
+
+**Classify the posts:**
+- Rank all visible posts by engagement (likes + comments)
+- Select top 3 (highest engagement) — these are the top performers
+- Select the 3 most recent — these show what they're posting now
+- If fewer than 6 posts are visible, work with what's available
+
+**If the connection has NO visible posts:**
+- Mark their profile as: `"status": "inactive"`
+- Increment `inactive_posters` counter
+- Move to the next connection in the queue
+
+### Step 4c: Output Profile Structure
+
+For each active profile, append/update the profiles array in `data/network/network-profiles.json`:
+
+```json
+{
+  "connection_name": "Devabratta Yumnam",
+  "connection_url": "https://www.linkedin.com/in/devabratta-yumnam-92a382354",
+  "company": "Nothing___Everything",
+  "role": "Founder & CEO",
+  "status": "active",
+  "mined_at": "2026-04-06",
+  "connection_type": "Founder/CEO",
+  "top_3_posts": [
+    {
+      "date": "2026-03-28",
+      "topic": "AI automation for small teams",
+      "format": "text + image",
+      "likes": 142,
+      "comments": 23,
+      "hook_style": "personal story opening",
+      "word_count_bucket": "medium"
+    }
+  ],
+  "recent_3_posts": [
+    {
+      "date": "2026-04-05",
+      "topic": "startup funding round",
+      "format": "text",
+      "likes": 8,
+      "comments": 1,
+      "hook_style": "announcement",
+      "word_count_bucket": "short"
+    }
+  ]
+}
+```
+
+**Connection type categories (for active_connection_types tracking):**
+- Founder/CEO
+- Software Engineer/Developer
+- Product Manager
+- Designer
+- Recruiter/HR
+- Student
+- Data Scientist/AI Engineer
+- Marketing/Sales
+- Other (specify)
+
+### Step 4d: Update the Cumulative Database
+
+After mining all 3 profiles for today:
+
+1. Update `data/network/network-profiles.json` with the new profile data
+2. Update counters:
+   - `profiles_mined_total` = total profiles analyzed
+   - `active_posters` = profiles with status "active"
+   - `inactive_posters` = profiles with status "inactive"
+   - `mining_queue.next_profiles_to_visit` = list of next 3 profile URLs for tomorrow
+   - `mining_queue.last_mined_index` = current index in connection list
+3. Set `last_updated` to today's date
+
+### Step 4e: Weekly Insights Calculation (Mondays only)
+
+If today is Monday:
+
+1. Aggregate all profiles mined in the last 7 days (the current week's cohort)
+2. Count `profiles_analyzed_this_week` from profiles with `mined_at` within the last 7 days
+3. **Only calculate insights if we have at least 5 profiles with posts** from this week. Otherwise set `insights_available: false` and skip to Step 4f.
+
+**Calculate the following:**
+
+**top_performing_topics:**
+- Group all posts with likes > 10 by topic
+- Calculate avg_engagement (likes + comments) per topic
+- Sort descending, return top 3
+- Include post_count for statistical context
+
+**top_performing_formats:**
+- Group all posts with likes > 10 by format type
+- Calculate avg_engagement per format
+- Sort descending, return all
+- Include post_count
+
+**top_performing_hook_styles:**
+- Group all posts with likes > 10 by hook_style
+- Calculate avg_engagement per hook style
+- Sort descending, return top 3
+- Include post_count
+
+**avg_engagement_by_word_count:**
+- Group all posts with likes > 10 by word_count_bucket
+- Calculate avg_engagement per bucket
+- Calculate for all three buckets: short, medium, long
+
+**active_connection_types:**
+- From all profiles with status "active", count by connection_type
+- Sort by count descending
+- Return all types found with counts
+
+Update `data/network/network-insights.json` with computed values. Set `insights_available: true`. Set `last_week_of` to current date.
+
+### Fallback Rules
+
+| Scenario | Response |
+|----------|----------|
+| LinkedIn shows CAPTCHA or "Verify you're human" | Skip ALL mining for today. Retry tomorrow. Log: "CAPTCHA encountered — mining paused" |
+| Connection has no visible posts | Mark status: "inactive". Increment inactive counter. Pick next unmined connection. |
+| > 70% of attempted profiles are inactive | Note: "Majority of connections are inactive posters — consider reducing mining frequency" |
+| Engagement numbers not visible on posts | Log post with likes: 0, comments: 0, "engagement_not_visible": true |
+| Connection URL is invalid or profile deleted | Skip. Mark status: "unavailable". Pick next connection. |
+
+### Display Summary
+
+```
+Network Mining Report: YYYY-MM-DD
+=================================
+Profiles mined: 3 (X active, X inactive)
+
+Active posters:
+  - [Name] ([Company]) — Top post: [topic] ([likes] likes)
+  - [Name] ([Company]) — Top post: [topic] ([likes] likes)
+  - [Name] ([Company]) — Top post: [topic] ([likes] likes)
+
+Cumulative: X active posters, X inactive posters
+
+[If Monday] Weekly insights generated:
+  Top topic: [topic] — avg [X] engagement
+  Top format: [format] — avg [X] engagement
+  Top hook: [hook] — avg [X] engagement
+```

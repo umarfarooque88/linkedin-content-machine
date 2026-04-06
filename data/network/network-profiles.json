@@ -1,0 +1,12 @@
+{
+  "last_updated": null,
+  "profiles_mined_total": 0,
+  "active_posters": 0,
+  "inactive_posters": 0,
+  "profiles": [],
+  "mining_queue": {
+    "next_profiles_to_visit": [],
+    "last_mined_index": 0,
+    "total_connections_scanned": 0
+  }
+}

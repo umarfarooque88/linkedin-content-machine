@@ -31,6 +31,34 @@ Read `data/engagement/engagement-log.json` if it exists. Check `total_posts_anal
   - **banned_hashtags**: Do NOT use these hashtags
   - **preferred_topic_categories**: When selecting research topics, prefer these categories
 
+### Step 0.5: Read Network Insights (if available)
+
+Read `data/network/network-insights.json` if it exists. Check `insights_available`:
+
+- If `insights_available` is false: skip network calibration, continue with current settings
+- If `insights_available` is true: use network patterns to calibrate format and style choices:
+
+**Format choice:**
+- Look at `top_performing_formats` — if text + image dominates, prefer that format. If text alone performs equally, text-only is fine.
+- This should inform the IMAGE PROMPT priority: does this network even engage with image-heavy posts?
+
+**Hook style:**
+- Look at `top_performing_hook_styles` — if contrarian hooks significantly outperform others, weight the hook style toward contrarian.
+- If personal story is dominant, weave more personal openings.
+
+**Word count:**
+- Look at `avg_engagement_by_word_count` — target the bucket with highest engagement.
+- If "medium" wins, that supports the current 80-150 word range. If "short" wins, tighten.
+
+**Topic awareness:**
+- If any of `top_performing_topics` overlap with today's research topic, lean harder into that overlap.
+
+**Active connection types:**
+- Look at `active_connection_types` — are the active posters "Founder/CEO" types, "Software Engineer" types, or "Recruiter/HR" types?
+- This tells you who in your network is creating content and getting engagement.
+
+Network calibration is secondary to engagement calibration. If engagement data exists and conflicts with network insights, weight engagement data more heavily (it's your own audience's behavior; network insights are peers' behavior).
+
 ### Step 1: Read Inputs
 - Read `config/style-profile.json` for voice constraints and unique angles
 - Read `config/style-profile.json` → `calibration` section for additional learned parameters
