@@ -40,11 +40,16 @@ Scan daily AI/tech trends and output 3-5 trending post topics with unique angles
    - Angle availability (can Umar add a unique developer perspective?)
    - Connection to Umar's experience (AI evaluation, full-stack dev, cold email AI, building products)
 
-3. For each trending topic, also identify Umar's personal connection:
-   - Can he relate it to a project he's built?
-   - Can he give a contrary opinion?
-   - Can he share a lesson or mistake?
-   - Can he speak as someone "in the trenches"?
+3. For each trending topic, identify Umar's personal connection by cross-referencing the experience brief:
+
+   Read `data/personal/experience-brief.md` to find specific connections:
+   - **Project connection**: Does any project from the brief directly relate to this topic? (e.g., OutreachAI relates to AI-generated content quality, email infrastructure, deliverability)
+   - **Belief connection**: Does this topic connect to a specific belief or opinion from the brief? (e.g., "AI can replace junior developers' coding but not their problem-solving")
+   - **Struggle connection**: Does this topic mirror a real struggle Umar has faced? (e.g., moving too fast → incomplete systems, idea overload)
+   - **Decision connection**: Did Umar make a real decision about this kind of problem? (e.g., choosing to build fast and iterate rather than plan perfectly)
+   - **Trenches connection**: Can he speak as someone who actually built with these tools, not someone who tweets about them?
+
+   When you find a connection, name the specific project, decision, or belief from the brief. Do NOT say "he has experience with AI" — say "he built OutreachAI, a cold email platform that handles AI-generated content quality and deliverability optimization."
 
 4. For each topic, create the research object:
 
@@ -104,10 +109,14 @@ From the comments, extract:
 
 ### Step 2c: Post Angles
 
+Read `data/personal/experience-brief.md` for Umar's specific projects, decisions, and beliefs.
+
 Based on the article + comments, identify 3 specific post angles Umar could write about:
-- **Angle 1**: The main take (article-backed, with data points and quotes)
-- **Angle 2**: The contrarian take (informed by the counter-arguments found in comments)
-- **Angle 3**: The personal experience connection (connect to Umar's actual projects/experience)
+- **Angle 1**: The main take (article-backed, with data points and quotes, connected to a specific project from the brief)
+- **Angle 2**: The contrarian take (informed by the counter-arguments found in comments, connected to a specific belief or opinion from the brief)
+- **Angle 3**: The personal experience connection (connect to a specific project, decision, or struggle from the brief — name it, don't be generic)
+
+Each angle MUST name a specific element from the experience brief. Generic connections like "he's a developer who works with AI" are not acceptable.
 
 ### Fallback Rules
 

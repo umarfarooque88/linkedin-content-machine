@@ -36,6 +36,7 @@ Read `data/engagement/engagement-log.json` if it exists. Check `total_posts_anal
 - Read `config/style-profile.json` → `calibration` section for additional learned parameters
 - Read today's research: `data/research/YYYY-MM-DD-topics.json`
 - Read today's deep brief if it exists: `data/research/YYYY-MM-DD-deep-brief.md`
+- Read `data/personal/experience-brief.md` for Umar's specific projects, decisions, beliefs, and stories
 - If calibration data exists: apply all calibration_settings overrides from Step 0
 
 **Deep brief priority:** If a deep brief exists for today's date, the #1 hot topic in the research file will have enriched context (`article_summary` + `comment_analysis`). The Post Generator MUST use the deep brief as the PRIMARY context for POST 1. This means:
@@ -122,14 +123,20 @@ Same structure as POST 1, but driven by the pillar topic rather than trends.
 - For "The Person": focus on career decisions, college life, building in public
 - For "The Take": use today's hottest research topic
 
-Draw from Umar's real experiences:
-- Built an email automation platform (cold email system)
-- Built a hostel management system with real clients
-- Building BuildStudio (my own company)
-- Worked on AI model evaluation
-- Self-taught developer in college
-- Freelance and project experience
-- Non-conventional path to development
+**Specificity Rules (CRITICAL):**
+Every pillar post MUST reference a specific project, decision, moment, or belief from the experience brief. Vague references like "I built a platform" or "in my experience" are not specific enough.
+- Name actual projects: "OutreachAI" (cold email platform), "BuildStudio" (your company), "Hostel Mess Management System" (deployed at MIT ADT University)
+- Reference real decisions: the choice to build products in college, the decision to iterate fast rather than plan perfectly, the philosophy that ideas are cheap but scale is hardest
+- Include real numbers, timelines, or specific situations when available from the brief
+- If the post is about a technical decision, name what you actually built and why
+- For "The Person" posts, reference real context: college life, self-taught path, managing multiple projects, freelancer mindset
+
+**Source your content from the experience brief:**
+Read `data/personal/experience-brief.md` for the full list of Umar's projects, decisions, beliefs, struggles, thinking patterns, and real context.
+- For "The Build": reference specific projects (OutreachAI, Hostel Mess System, BuildStudio) with real architectural decisions and tradeoffs
+- For "The Lesson": draw from the "Struggles & Pattern Recognition" section — moving too fast, refining vs testing, high-complexity ideas
+- For "The Person": use the "Real Context" section — college life, self-taught path, simultaneous projects, freelancer mindset
+- For "The Take": connect opinions from the "Beliefs & Opinions" section to the topic at hand
 
 ### Step 4: Validate Each Post
 - [ ] Word count within bounds (80-150, or calibrated range)
@@ -138,7 +145,8 @@ Draw from Umar's real experiences:
 - [ ] Has clear hook → body → CTA structure
 - [ ] Image prompt is 80+ words and detailed
 - [ ] Feels like a real human wrote it
-- [ ] Could it be anyone's post, or does it sound like Umar specifically?
+- [ ] **Specificity check**: Post references at least one specific project, decision, belief, or struggle from the experience brief by name. If the post says "I built a platform" without naming which platform or what made it interesting, it fails.
+- [ ] Could it be anyone's post, or does it sound like Umar specifically? If generic, REJECT and rewrite with concrete Umar detail
 - [ ] Hook hook_type matches calibration preference (if set and confidence >= "good")
 - [ ] Hashtags don't include anything from banned_hashtags (if calibration available)
 
