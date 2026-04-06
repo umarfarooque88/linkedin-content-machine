@@ -37,6 +37,17 @@
     "self-taught developer",
     "shipping real products"
   ],
+  "core_hashtags": ["#BuildInPublic", "#AI", "#BuildStudio"],
+  "topic_hashtags": {
+    "ai_tools": ["#AISystems", "#LLM", "#MachineLearning"],
+    "developer_workflow": ["#SoftwareEngineering", "#DeveloperLife"],
+    "product_building": ["#ProductDevelopment", "#Startups", "#FounderJourney"],
+    "career_growth": ["#SelfTaughtDeveloper", "#CareerGrowth"],
+    "automation": ["#Automation", "#Productivity"],
+    "business_ops": ["#SaaS", "#TechNews"],
+    "opinion_takes": ["#DeveloperEconomy", "#TechCommunity"]
+  },
+  "discovery_hashtags": ["#FutureOfWork", "#Innovation", "#WebDev", "#OpenSource", "#DeveloperEconomy", "#TechCommunity", "#CodingLife", "#StartupMindset"],
   "unique_angles": [
     "Values real-world development over just learning",
     "Self-taught, self-driven, product-focused",

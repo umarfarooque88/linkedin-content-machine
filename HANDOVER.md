@@ -1,8 +1,8 @@
 # LinkedIn Content Machine — Handover Document
 
-> Last updated: 2026-04-05
-> Status: **Running with Feedback Loop** — Engagement tracking active, system self-calibrating
-> Decision: Approach C (Evergreen + Trend Mix) — 2 posts daily
+> Last updated: 2026-04-06
+> Status: **Full Chrome Replacement Complete** — RSS/API-based research + 6-tag hashtag strategy
+> Decision: Approach C (Evergreen + Trend Mix) — 2 posts daily — 6 hashtags per post
 
 ---
 
@@ -30,23 +30,40 @@ Umar has 1700+ connections but near-zero engagement (3-4 likes). No time to rese
 ## Architecture
 
 ```
-[Style Analyzer (one-time setup)]
-         |
-         v
-[Research Engine (daily scan)] --> [Post Generator (daily, 2 posts)]
-                                           |
-                                ┌────────────────────┐
-                                v                     v
-                         [Text Posts]          [Media Generator]
-                                │                     │
-                                └──────────┬──────────┘
-                                           v
-                              [Google Sheets Content Hub]
-                               (post text + image + status)
-                                           |
-                                  [Umar reviews + posts]
-                                           |
-                                   LinkedIn (manual)
+                   RSS/API feeds (no browser needed)
+                              |
+           ┌──────────────────┼──────────────────┐
+           v                  v                   v
+  [HN "New/Ask/Top"]  [HN "Ask"]  [The Verge AI RSS]
+           |                  |                   |
+           └──────────────────┼──────────────────┘
+                              v
+                  [fetch-research.js script]
+                              |
+                              v
+              [Research Engine: rank + filter]
+                              |
+              [deep-dive.js on #1 topic]
+                (Jina API + HN Firebase)
+                              |
+                              v
+               [Post Generator (daily, 2 posts)]
+                              |
+                     ┌───────────────┐
+                     v               v
+              [Text Posts]    [Download Images]
+                     │          (Pollinations)
+                     └──────┬──────┘
+                            v
+               [Content Scheduler → Google Sheets]
+                            |
+                   [Umar reviews + posts]
+                            |
+                    LinkedIn (manual posting)
+                            |
+                   [Engagement Tracker enters stats]
+                            |
+                   [Calibration → Post Generator auto-adjusts]
 ```
 
 ## Daily Post Structure
@@ -105,12 +122,24 @@ We source from **fresh feeds**, not trending pages:
 | HN "Top" | Reference only | Check what's ALREADY saturated — AVOID those |
 
 ### Research Method
-**WebSearch doesn't work with free model.** We use the Chrome browser plugin:
+**RSS feeds — no web scraping needed.** We run a local script (`scripts/fetch-research.js`) that fetches 4 RSS feeds:
 ```
-Navigate to: https://news.ycombinator.com/newest → Extract markdown
-Navigate to: https://www.theverge.com/ai-artificial-intelligence → Extract markdown
+node scripts/fetch-research.js
 ```
-No API needed, no credits needed, works with any model.
+- HN "New" → https://hnrss.org/newest?count=30
+- HN "Ask" → https://hnrss.org/ask?count=30
+- HN "Top" → https://hnrss.org/best?count=30
+- The Verge AI → https://www.theverge.com/rss/ai-artificial-intelligence/index.xml
+
+**Phase 2 Deep Dive — API-based article extraction + comment mining:**
+```
+node scripts/deep-dive.js <article_url> [search_term]
+```
+- Article body: Jina Reader API (`r.jina.ai/<url>`) — free, 200/day, clean markdown
+- HN comments: Firebase API (`hacker-news.firebaseio.com/v0/item/<id>.json`) — free, no auth, unlimited
+- Non-HN article discussion: Algolia HN search — free, no auth needed
+
+Structured data from all sources. No API keys, no credits, no browser needed.
 
 ### Media Generation
 - Tool: Pollinations.ai (free, no API key, Flux model)
@@ -124,11 +153,11 @@ No API needed, no credits needed, works with any model.
 | 1 | **No feedback loop — flying blind** | ✅ FIXED | Engagement tracker (skill 05) built. Multi-dimensional analysis tracks engagement by pillar, hook type, word count, hashtag set, day of week, topic category. System auto-calibrates Post Generator using confidence-weighted calibration. Append-only JSONL database + rolling analysis with confidence levels. Full implementation: `skills/05-engagement-tracker.md`, `data/engagement/`. See HANDOVER.md "The Engagement Feedback Loop" section for complete details. |
 | 2 | **Research is shallow** | ✅ FIXED | Deep research engine upgraded. Three-phase flow: headline scan → article extraction + comment mining → two-part output (enriched JSON + deep brief markdown). Selects #1 hot topic, reads full article body, mines top 20 HN comments for sentiment/counter-arguments/post angles. For non-HN sources: searches HN for related discussions. Fallback rules for empty/comment-sparse topics. Post Generator now consumes deep brief when available. Full changes: `skills/02-research-engine.md` (Phase 2 + 3 added), `skills/03-post-generator.md` (deep brief integration). Design: `docs/superpowers/specs/2026-04-05-deep-research-design.md`. |
 | 3 | **Personal experience feels generic** | ✅ FIXED | Created `data/personal/experience-brief.md` — a living document extracted from Umar's personal research reports containing specific projects (OutreachAI, BuildStudio, Hostel Mess System, STERL, AI Medical Triage), key decisions (building in college, fast iteration over perfectionism, services + products focus), beliefs (AI replaces coding not problem-solving, speed > perfectionism, ideas cheap vs scale hardest), struggles (moving too fast → incomplete systems, refining vs testing, high-complexity ideas), thinking patterns (root cause first, systems thinking, minimal-human-intervention design), and real context (college life, self-taught path, freelancer mindset). Post Generator now reads this brief and enforces specificity rules: every pillar post must reference specific projects, decisions, or beliefs. Research Engine cross-references the brief for personal connections. Generic language ("I built a platform") replaced with concrete references ("I built OutreachAI, a cold email platform"). Full changes: `data/personal/experience-brief.md`, updated `skills/03-post-generator.md` and `skills/02-research-engine.md`. |
-| 4 | **No connection analysis** | ✅ FIXED | Added automated daily network mining (Phase 4 of Research Engine). System visits 3 connection profiles per day via Chrome browser, extracts their top 3 performing + 3 recent posts (topic, engagement, format, hook style, word count), stores cumulatively in `data/network/network-profiles.json`. Weekly insights calculated every Monday (requires 5+ profiles with posts): top-performing topics, formats, hook styles, word count buckets, active connection types. Post Generator reads network insights (Step 0.5) and calibrates format/hook/style choices. After 4 weeks (~60 profiles): robust pattern recognition of what works in Umar's specific network of 1,653 connections. Source: `Dataset/Basic_LinkedInDataExport_04-05-2026/Connections.csv`. |
+| 4 | **No connection analysis** | REMOVED | Network mining via Chrome was removed. The engagement feedback loop (#1) provides superior ground-truth data. |
 | 5 | **Image pipeline is dead weight** | Open | Pollinations gives hit-or-miss results. Deferred. |
 | 6 | **No Google Sheets integration** | Open | Still manual copy-paste. No API integration yet. |
 | 7 | **No topic calendar** | Open | Risk of repeating themes or having gaps. |
-| 8 | **No hashtag strategy** | ✅ Part of #1 | Handled by engagement tracker — analyzes hashtag set performance, recommends preferred/banned sets. |
+| 8 | **No hashtag strategy** | ✅ FIXED | Three-layer hashtag system: 3 fixed core tags (`#BuildInPublic`, `#AI`, `#BuildStudio`) always present, 2 topic-match tags from dictionary (7 categories mapped), 1 rotating discovery tag from pool of 8. Total 6 per post. Engagement tracker logs per-tag + per-set performance, auto-calibrates preferred/banned lists. |
 | 9 | **No consistency between days** | ✅ Part of #1 | Handled by calibration reports that run every 10 posts. |
 
 ## Data Sources
@@ -146,8 +175,8 @@ No API needed, no credits needed, works with any model.
 ├── HANDOVER.md                 # This file
 ├── DAILY-WORKFLOW.md           # Step-by-step daily process
 ├── config/
-│   ├── daily-config.json       # Post frequency, pillar rotation settings
-│   └── style-profile.json      # Umar's voice calibration
+│   ├── daily-config.json       # Post frequency, pillar rotation, hashtags-per-post (6)
+│   └── style-profile.json      # Voice + core/topic/discovery hashtag dictionaries
 ├── data/
 │   ├── research/               # Daily research (YYYY-MM-DD-topics.json)
 │   ├── posts/                  # Daily posts (YYYY-MM-DD-posts.json)
@@ -161,12 +190,15 @@ No API needed, no credits needed, works with any model.
 │       ├── plans/              # Implementation plans
 │       └── specs/              # Design specifications
 ├── scripts/
+│   ├── fetch-research.js       # RSS feed fetcher — HN + The Verge research data
+│   ├── deep-dive.js            # Article extraction + HN comment mining (Jina + Firebase APIs)
 │   └── download-images.js      # Pollinations.ai image downloader
 └── skills/
     ├── 01-style-analyzer.md    # Analyzes writing samples
-    ├── 02-research-engine.md   # Scans daily AI/tech trends
-    ├── 03-post-generator.md    # Generates 2 daily posts
-    └── 04-content-scheduler.md # Formats for Google Sheets
+    ├── 02-research-engine.md   # RSS feeds + Jina/Firebase APIs — no Chrome
+    ├── 03-post-generator.md    # Generates 2 daily posts with 6-tag hashtag strategy
+    ├── 04-content-scheduler.md # Formats for Google Sheets
+    └── 05-engagement-tracker.md# Tracks per-tag + per-set engagement, auto-calibrates
 ```
 
 ## Daily Workflow
@@ -180,8 +212,8 @@ See `DAILY-WORKFLOW.md` — ~10 minutes per day:
 - Shell: Bash (Git Bash)
 - Node.js: v22.15.0
 - Python: Not installed
-- Chrome browser plugin: Works perfectly for research
 - GitHub repo: `Umar-Farooque/linkedin-content-machine`
+- RSS feeds for research: hnrss.org + The Verge RSS
 
 ## Key Decisions Made
 
@@ -192,25 +224,26 @@ See `DAILY-WORKFLOW.md` — ~10 minutes per day:
 | 2 posts per day | Maximum feed presence, faster learning |
 | Google Sheets as hub | Familiar, accessible, organized |
 | Pollinations.ai for images | Free, no API key — but quality is hit-or-miss |
-| Chrome browser for research | Works with free model, no credits needed |
+| RSS feeds for research | Structured data, instant, no browser/credits needed |
 | HN "New" over HN "Top" | Speed advantage — post before news trends |
 | Brand-name hooks for trends | Named brands = instant context = scroll stop |
 | Contrarian hooks for pillars | Challenge beliefs = tension loop = engagement |
 
 ## What's Working Well
 
-- Research via Chrome browser pulls real live data
+- RSS feeds for research pull structured data instantly (no browser needed)
+- Deep dive API extracts full articles + HN comments automatically (Jina + Firebase)
 - Hook rules are calibrated — posts now have punchy, brand-named openers
 - Short format (80-150 words) matches LinkedIn's sweet spot
 - No employer name-dropping — posts feel like thought leadership, not resumes
+- 6-tag hashtag strategy: 3 core (#BuildInPublic, #AI, #BuildStudio) + 2 topic-match + 1 rotating discovery
+- Network mining (Phase 4) removed — engagement tracker provides superior ground-truth calibration
 
 ## What Needs Work
 
-- Feedback loop (engagement tracking)
-- Deep research (read articles, not just headlines)
-- Connection analysis (know your audience)
 - Google Sheets API integration
 - Consistent image quality (or skip images)
+- Topic calendar
 
 ---
 

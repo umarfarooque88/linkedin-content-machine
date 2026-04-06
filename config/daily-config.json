@@ -4,6 +4,6 @@
   "min_word_count": 150,
   "max_word_count": 300,
   "always_trend_anchored_posts": 1,
-  "hashtags_per_post": 5,
+  "hashtags_per_post": 6,
   "image_style": "modern tech, clean minimalist, professional, high quality, no text overlay"
 }

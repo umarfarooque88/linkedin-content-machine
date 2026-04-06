@@ -17,13 +17,36 @@ When a post is 24 hours old, track its engagement:
 
 ### Step 1: Research (3 min)
 
+### Step 1a: Fetch feeds (1 min)
+
+```bash
+cd "E:\LinkedIn Automation"
+node scripts/fetch-research.js
+```
+
+This pulls live RSS feeds from HN "New", HN "Ask", HN "Top", and The Verge AI, deduplicates, and saves raw items to `data/research/YYYY-MM-DD-topics.json`.
+
+### Step 1b: Deep dive on #1 topic (1 min)
+
+Run the deep dive script on today's hottest topic URL:
+```bash
+cd "E:\LinkedIn Automation"
+node scripts/deep-dive.js <topic_url> <optional_search_term>
+```
+
+This fetches the full article body via Jina Reader API (`r.jina.ai/<url>`) and HN comments via Firebase API (`hacker-news.firebaseio.com/v0/item/<id>.json`). Outputs raw data to `data/research/YYYY-MM-DD-deep-dive.json`.
+
+### Step 1c: Process feeds into topics (1 min)
+
 Run the **Research Engine** skill (skill: `skills/02-research-engine.md`).
 
 It will:
-- Navigate to HN "New" + The Verge AI using the Chrome browser
-- Extract live headlines and stories
-- Find 3-5 trending topics with your unique angle
-- Output: `data/research/YYYY-MM-DD-topics.json`
+- Read the raw feed data from Step 1a
+- Read deep dive data from Step 1b
+- Filter and rank items for AI/tech relevance
+- Find 3-5 trending topics with unique angles
+- Enrich with deep dive insights (Phase 2)
+- Output: `data/research/YYYY-MM-DD-topics.json` (enriched)
 
 ### Step 2: Generate Posts (3 min)
 
@@ -95,12 +118,23 @@ Every 10 posts, review the calibration report in `data/engagement/calibration-re
 
 It tells you what's working and what's not. The Post Generator uses this to auto-adjust future posts.
 
+## Scripts
+
+| Script | Purpose | Output |
+|--------|---------|--------|
+| `scripts/fetch-research.js` | Fetch RSS feeds (HN + The Verge) | `data/research/YYYY-MM-DD-topics.json` (raw items) |
+| `scripts/deep-dive.js` | Extract article + HN comments | `data/research/YYYY-MM-DD-deep-dive.json` (raw data) |
+| `scripts/download-images.js YYYY-MM-DD` | Generate images via Pollinations | `data/media/YYYY-MM-DD-{pillar}.png` |
+
 ## File Locations
 
 | What | Where |
 |------|-------|
 | Style profile | `config/style-profile.json` |
+| Experience brief | `data/personal/experience-brief.md` |
 | Daily research | `data/research/YYYY-MM-DD-topics.json` |
+| Daily deep brief | `data/research/YYYY-MM-DD-deep-brief.md` |
+| Daily deep dive | `data/research/YYYY-MM-DD-deep-dive.json` |
 | Daily posts | `data/posts/YYYY-MM-DD-posts.json` |
 | Engagement database | `data/engagement/posts-db.jsonl` |
 | Engagement analysis | `data/engagement/engagement-log.json` |

@@ -65,6 +65,7 @@ Network calibration is secondary to engagement calibration. If engagement data e
 - Read today's research: `data/research/YYYY-MM-DD-topics.json`
 - Read today's deep brief if it exists: `data/research/YYYY-MM-DD-deep-brief.md`
 - Read `data/personal/experience-brief.md` for Umar's specific projects, decisions, beliefs, and stories
+- Read `config/style-profile.json` → `core_hashtags`, `topic_hashtags`, `discovery_hashtags` for hashtag strategy
 - If calibration data exists: apply all calibration_settings overrides from Step 0
 
 **Deep brief priority:** If a deep brief exists for today's date, the #1 hot topic in the research file will have enriched context (`article_summary` + `comment_analysis`). The Post Generator MUST use the deep brief as the PRIMARY context for POST 1. This means:
@@ -73,6 +74,32 @@ Network calibration is secondary to engagement calibration. If engagement data e
 - Reference the community debate/consensus found in HN comments
 - Use the counter-argument from comments to avoid naive one-sided takes
 - Consider the "gaps in conversation" for a unique angle nobody else is taking
+
+### Step 1.5: Build Hashtag Set (6 tags total)
+
+Every post gets exactly 6 hashtags:
+
+**3 core hashtags (fixed, always):** `#BuildInPublic`, `#AI`, `#BuildStudio` — from `core_hashtags` in style-profile.json. Never changes.
+
+**2 topic-match hashtags (based on post content):**
+
+| Map post to ↓ | Pick 2 from → |
+|---|---|
+| AI tools, models, API news | `topic_hashtags.ai_tools` (AISystems, LLM, MachineLearning) |
+| Developer workflow, code craft | `topic_hashtags.developer_workflow` (SoftwareEngineering, DeveloperLife) |
+| Products, startups, founding | `topic_hashtags.product_building` (ProductDevelopment, Startups, FounderJourney) |
+| Career, education, journey | `topic_hashtags.career_growth` (SelfTaughtDeveloper, CareerGrowth) |
+| Automation, systems, productivity | `topic_hashtags.automation` (Automation, Productivity) |
+| Business ops, SaaS, tech news | `topic_hashtags.business_ops` (SaaS, TechNews) |
+| Opinions, controversial takes | `topic_hashtags.opinion_takes` (DeveloperEconomy, TechCommunity) |
+
+Use both if category has 2 tags. Pick 2 most specific if 3+.
+
+**1 discovery hashtag (rotating):** Pick from `discovery_hashtags` in style-profile.json. Rotate sequentially — never reuse previous post's discovery tag.
+
+**Assembly order:** core (3) + topic (2) + discovery (1) = 6 total.
+
+**Calibration override:** If `banned_hashtags` exists in engagement-log.json, remove any match. If `preferred_hashtags` exists, include at least one from preferred list.
 
 ### Step 2: Generate POST 1 (TREND-ANCHORED)
 Pick the hottest (most urgent, most interesting) topic from today's research.
@@ -118,7 +145,7 @@ Pick the hottest (most urgent, most interesting) topic from today's research.
 
 [SOFT CTA — question or open thought, never "Comment below"]
 
-#hashtag1 #hashtag2 #hashtag3 #hashtag4 #hashtag5
+#BuildInPublic #AI #BuildStudio #topic_tag_1 #topic_tag_2 #discovery_tag
 
 IMAGE PROMPT: [80+ word detailed description of a specific, concrete visual. NO floating screens, NO code editors, NO corporate stock art. Must be editorial illustration style with bold colors, specific composition, and a visual metaphor that matches the hook.]
 ```
@@ -176,7 +203,7 @@ Read `data/personal/experience-brief.md` for the full list of Umar's projects, d
 - [ ] **Specificity check**: Post references at least one specific project, decision, belief, or struggle from the experience brief by name. If the post says "I built a platform" without naming which platform or what made it interesting, it fails.
 - [ ] Could it be anyone's post, or does it sound like Umar specifically? If generic, REJECT and rewrite with concrete Umar detail
 - [ ] Hook hook_type matches calibration preference (if set and confidence >= "good")
-- [ ] Hashtags don't include anything from banned_hashtags (if calibration available)
+- [ ] **Hashtag check**: Post has exactly 6 hashtags (3 core + 2 topic + 1 discovery), no duplicates, no banned tags
 
 ### Step 5: Write Output to `data/posts/YYYY-MM-DD-posts.json`
 
@@ -192,7 +219,8 @@ Read `data/personal/experience-brief.md` for the full list of Umar's projects, d
       "hook": "The hook line",
       "body": "Everything after hook and before soft CTA",
       "soft_cta": "The closing question/thought",
-      "hashtags": ["#tag1", "#tag2", "#tag3", "#tag4", "#tag5"],
+      "hashtags": ["#BuildInPublic", "#AI", "#BuildStudio", "#topic_1", "#topic_2", "#discovery"],
+      "topic_category": "ai_tools",
       "full_post_text": "Complete post ready for LinkedIn, with line breaks",
       "image_prompt": "Detailed image generation prompt",
       "image_url": null,
@@ -206,7 +234,8 @@ Read `data/personal/experience-brief.md` for the full list of Umar's projects, d
       "hook": "The hook line",
       "body": "Everything after hook and before soft CTA",
       "soft_cta": "The closing question/thought",
-      "hashtags": ["#tag1", "#tag2", "#tag3", "#tag4", "#tag5"],
+      "hashtags": ["#BuildInPublic", "#AI", "#BuildStudio", "#topic_1", "#topic_2", "#discovery"],
+      "topic_category": "product_building",
       "full_post_text": "Complete post ready for LinkedIn, with line breaks",
       "image_prompt": "Detailed image generation prompt",
       "image_url": null,
