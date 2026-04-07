@@ -376,8 +376,11 @@ function finishStatsEntry(chatId, session) {
 
   const stillPending = getPendingEngagement();
   if (stillPending.length > 0) {
+    // Auto-advance to next pending post
+    setTimeout(() => startStatsFlow(chatId), 1000);
+  } else {
     bot.sendMessage(chatId,
-      `📋 ${stillPending.length} more post${stillPending.length > 1 ? 's' : ''} pending. Tap /stats or Report Stats to continue.`
+      `✅ All stats entered! System now has data for calibration.`
     );
   }
 }
