@@ -69,23 +69,23 @@ node scripts/download-images.js YYYY-MM-DD
 
 > **Note:** Image quality from Pollinations is hit-or-miss. Consider skipping for now.
 
-### Step 4: Format for Google Sheets (1 min)
+### Step 4: Receive Posts via Telegram (automatic)
 
-Run the **Content Scheduler** skill (skill: `skills/04-content-scheduler.md`).
+The Telegram bot delivers both posts automatically at 10:00 AM (or 10:30 AM when posts aren't pre-generated):
 
-It will:
-- Format posts for easy copy-paste to Google Sheets
-- Flag any pending engagement entries from previous days
-- Suggest tomorrow's pillar rotation
+1. Bot sends the Morning Brief with both posts to your Telegram
+2. Click [📋 Copy Post 1] or [📋 Copy Post 2] to get clean text for copy-pasting
+3. Click [📊 Report Stats] if you have engagement data from yesterday
+4. Use `/status` to check pending entries, `/generate` to force research + generation
 
 ### Step 5: Post to LinkedIn (2 min per post, anytime today)
 
-1. Open your Google Sheets content hub
-2. Copy post text
+1. Open Telegram on your phone, find the Morning Brief
+2. Tap [📋 Copy] on the post you want
 3. Open LinkedIn → Create Post
 4. Paste text + upload image from `data/media/` (if generated)
 5. Post!
-6. Update status to "Posted" in Sheets
+6. The bot marks the post as reviewed
 7. Note: remember to enter engagement for this post at the 24h mark (Step 0 tomorrow or the next day depending on post time)
 
 ## Content Pillar Rotation
@@ -125,6 +125,7 @@ It tells you what's working and what's not. The Post Generator uses this to auto
 | `scripts/fetch-research.js` | Fetch RSS feeds (HN + The Verge) | `data/research/YYYY-MM-DD-topics.json` (raw items) |
 | `scripts/deep-dive.js` | Extract article + HN comments | `data/research/YYYY-MM-DD-deep-dive.json` (raw data) |
 | `scripts/download-images.js YYYY-MM-DD` | Generate images via Pollinations | `data/media/YYYY-MM-DD-{pillar}.png` |
+| `scripts/telegram-bot.js` | Telegram bot — delivers posts, receives stats, orchestrates daily flow | Telegram messages |
 
 ## File Locations
 

@@ -21,9 +21,9 @@ Save images to `data/media/YYYY-MM-DD-{pillar-slug}.png`
 
 If the image generation fails or times out (15s max), use a fallback prompt and retry once.
 
-### Step 3: Format for Google Sheets
+### Step 3: Format for Telegram Delivery
 
-Output each post in a copy-friendly format:
+The Telegram bot reads this file and delivers posts automatically. No manual formatting needed.
 
 ```
 ═══════════════════════════════════

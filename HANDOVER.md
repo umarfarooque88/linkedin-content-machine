@@ -188,7 +188,7 @@ Exactly 6 hashtags per post, strict composition:
 | 3 | **Personal experience feels generic** | ✅ FIXED + REWRITTEN | Experience brief (`data/personal/experience-brief.md`) completely rewritten with honest framing. Projects described as learning prototypes, not production SaaS. Post Generator rules updated: daily building journey is valid content source, project mentions must be honest ("an email automation system I'm building" not "OutreachAI, a cold email platform"). FORBIDDEN list for inflated language (platform, production-grade, at-scale). Priority order: today's work → real lessons → decisions → beliefs → struggles. |
 | 4 | **No connection analysis** | REMOVED | Network mining via Chrome was removed. The engagement feedback loop (#1) provides superior ground-truth data. |
 | 5 | **Image pipeline is dead weight** | ⚠️ PARTIAL | Multi-style generator rebuilt (`scripts/generate-images.js`): 4 styles per pillar with short 10-15 word prompts. Editorial illustrations work perfectly (cracked lightbulb with shoots = exact match). Photorealistic workspaces work well. Text-overlay cards: Flux cannot render multi-word text reliably — single 1-2 word text works ~50% of time. Need to either accept text errors on cards or replace text-style with another visual format. Script is live and generates images for every post automatically. |
-| 6 | **No Google Sheets integration** | Open | Still manual copy-paste. No API integration yet. |
+| 6 | **No Google Sheets integration** | ✅ FIXED | Telegram bot delivers posts directly to phone. Inline buttons for copy/stats. Zero manual formatting needed. |
 | 7 | **No topic calendar** | ✅ FIXED | Topic calendar (`data/topics/calendar.json`) tracks all posted topics with date, pillar, category, headline, keywords, and angle. Research Engine dedups against `recently_used_keywords` (7-day window) — skips same event/product unless hot + new angle. Post Generator reads `gaps.uncovered_pillars` and `gaps.uncovered_categories` to fill coverage holes. Calendar auto-updates with coverage stats, gap analysis, and rotation targets per week. Backfilled with all existing posts. |
 | 8 | **No hashtag strategy** | ✅ FIXED | Three-layer hashtag system: 3 fixed core tags (`#BuildInPublic`, `#AI`, `#BuildStudio`) always present in first 3 positions, 2 topic-match tags from dictionary (7 categories, 14+ options), 1 rotating discovery tag from pool of 8. Total 6 per post — strictly enforced. Only approved hashtags may appear (no brand names, no project names, no fabricated tags). Post Generator skill updated with FORBIDDEN list for invalid hashtags. Engagement tracker logs per-tag + per-set performance, auto-calibrates preferred/banned lists after 10+ posts. Existing posts (Apr 5, Apr 6) retrofixed. |
 | 9 | **No consistency between days** | ✅ Part of #1 | Handled by calibration reports that run every 10 posts. |
@@ -283,6 +283,7 @@ See `DAILY-WORKFLOW.md` — ~10 minutes per day:
 | Brand-name hooks for trends | Named brands = instant context = scroll stop |
 | Contrarian hooks for pillars | Challenge beliefs = tension loop = engagement |
 | Honest project framing | Prototypes as prototypes, daily building as content — no inflation |
+| Telegram bot for delivery + stats | Replace Sheets with push notifications. Zero ToS risk, natural for phone review |
 
 ## What's Working Well
 
@@ -297,7 +298,6 @@ See `DAILY-WORKFLOW.md` — ~10 minutes per day:
 
 ## What Needs Work
 
-- Google Sheets API integration
 - Consistent image quality (or skip images)
 - Engagement tracking needs live data to calibrate
 
