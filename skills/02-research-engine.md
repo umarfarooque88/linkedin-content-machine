@@ -14,9 +14,15 @@ This fetches 4 RSS feeds (HN "New", HN "Ask", HN "Top", The Verge AI), normalize
 
 The output contains `raw_items` array with fields: `title`, `url`, `points`, `comment_count`, `author`, `publishedAt`, `feed` (`hn_new`, `hn_ask`, `hn_top`, `verge_ai`).
 
-2. Read the raw feed data from `data/research/YYYY-MM-DD-topics.json` and process it:
+2. Read the topic calendar from `data/topics/calendar.json` to check what has been recently covered. For each item in the feed:
+   - Compare its title and keywords against `recently_used_keywords` in the calendar
+   - **DEDUP RULE**: If a topic covers the same event, product, or keyword within the last 7 days, flag it as `recently_covered` and skip it unless the urgency is "hot" AND the angle is substantially different (not just a reworded post about the same event)
+   - **GAP PRIORITY**: If a feed item maps to a category or pillar that has 0 coverage in `category_coverage_last_7_days` or `pillar_coverage_last_7_days`, boost its priority
+   - The `rotation_targets` field tells you which pillars and categories need more coverage this week
 
-2. Filter and rank the raw items by:
+3. Read the raw feed data from `data/research/YYYY-MM-DD-topics.json` and process it:
+
+3. Filter and rank the raw items by:
    - Relevance to Umar's audience (developers, tech professionals, students)
    - Engagement potential (controversial, surprising, or practical)
    - Angle availability (can Umar add a unique developer perspective?)
@@ -27,6 +33,38 @@ The output contains `raw_items` array with fields: `title`, `url`, `points`, `co
    - Engagement potential (controversial, surprising, or practical)
    - Angle availability (can Umar add a unique developer perspective?)
    - Connection to Umar's experience (AI evaluation, full-stack dev, cold email AI, building products)
+
+### Step 1.5: Topic Calendar Dedup & Gap Filling
+
+Read `data/topics/calendar.json` and apply the following logic before generating research objects:
+
+**A. Keyword Deduplication (7-day window)**
+- Load `recently_used_keywords` from the calendar. Each keyword entry represents a topic that has been posted within the last `duplicate_check_window_days` (7 days).
+- For each candidate topic, compare its headline and key terms against `recently_used_keywords`. If any keyword or close variant matches, and the topic covers the same event, product, or narrative as a recent post, **skip it** unless BOTH conditions are met:
+  1. Urgency is "hot" (major breaking development on an already-covered topic)
+  2. The angle is substantially different from the previously posted angle (not just reworded)
+- Example: if "Anthropic" and "coding agents" are in `recently_used_keywords` and a new item is about Anthropic's coding agent policy, skip it unless there is a major new development with a fresh angle.
+
+**B. Gap Priority Boost**
+- Read `gaps.uncovered_pillars` and `gaps.uncovered_categories` from the calendar.
+- If a feed item maps to a pillar that has 0 in `pillar_coverage_last_7_days` (e.g. "The Lesson": 0, "The Person": 0), boost its priority score.
+- If a feed item maps to a category that has 0 in `category_coverage_last_7_days` (e.g. "ai_tools", "developer_workflow", "career_growth", "automation", "business_ops"), boost its priority score.
+- When two topics are otherwise equally strong, prefer the one that fills a coverage gap.
+
+**C. Rotation Target Awareness**
+- Read `rotation_targets` to see the weekly targets:
+  - `"pillars_per_week"` tells you how many posts each pillar should get this week.
+  - `"min_categories_per_week"` tells you the minimum distinct categories needed.
+- Use this to guide pillar assignment: if "The Lesson" target is 3 but coverage is 0, prefer assigning Lesson-appropriate topics over giving another Take post.
+
+**D. Calendar Update (post-selection)**
+- After selecting today's topics, update the calendar:
+  - Append each selected topic to `posted_topics` with: `date`, `pillar`, `headline`, `topic_category`, `topic_source`, `keywords` (3-5 keywords per topic), and `angle`.
+  - Recalculate `pillar_coverage_last_7_days` and `category_coverage_last_7_days` based on the last 7 days of `posted_topics`.
+  - Recalculate `gaps.uncovered_pillars` and `gaps.uncovered_categories` — any pillar or category still at 0 after today's posts.
+  - Append today's topic keywords to `recently_used_keywords` (deduplicated).
+  - Set `last_updated` to today's date.
+  - Write the updated calendar back to `data/topics/calendar.json`.
 
 3. For each trending topic, identify Umar's personal connection by cross-referencing the experience brief:
 

@@ -1,0 +1,33 @@
+{
+  "date": "2026-04-07",
+  "article_url": "https://news.ycombinator.com/item?id=47671453",
+  "search_terms": "LLM cost control limits pricing",
+  "article": {
+    "success": true,
+    "body": "Title: Ask HN: How are you controlling costs and enforcing limits for LLM calls?\n\nURL Source: https://news.ycombinator.com/item?id=47671453\n\nMarkdown Content:\n# Ask HN: How are you controlling costs and enforcing limits for LLM calls? | Hacker News\n\n[![Image 1](https://news.ycombinator.com/y18.svg)](https://news.ycombinator.com/)**[Hacker News](https://news.ycombinator.com/news)**[new](https://news.ycombinator.com/newest) | [past](https://news.ycombinator.com/front) | [comments](https://news.ycombinator.com/newcomments) | [ask](https://news.ycombinator.com/ask) | [show](https://news.ycombinator.com/show) | [jobs](https://news.ycombinator.com/jobs) | [submit](https://news.ycombinator.com/submit)[login](https://news.ycombinator.com/login?goto=item%3Fid%3D47671453)\n\n[](https://news.ycombinator.com/vote?id=47671453&how=up&goto=item%3Fid%3D47671453)[Ask HN: How are you controlling costs and enforcing limits for LLM calls?](https://news.ycombinator.com/item?id=47671453) 2 points by [8dazo](https://news.ycombinator.com/user?id=8dazo)[2 hours ago](https://news.ycombinator.com/item?id=47671453) | [hide](https://news.ycombinator.com/hide?id=47671453&goto=item%3Fid%3D47671453) | [past](https://hn.algolia.com/?query=Ask%20HN%3A%20How%20are%20you%20controlling%20costs%20and%20enforcing%20limits%20for%20LLM%20calls%3F&type=story&dateRange=all&sort=byDate&storyText=false&prefix&page=0) | [favorite](https://news.ycombinator.com/fave?id=47671453&auth=eb01b30490cf266b72c920665af2425a6db153a8) | [1 comment](https://news.ycombinator.com/item?id=47671453) I’ve been running into an issue with LLM/agent systems where unexpected loops or repeated calls can quickly drive up costs. Most tools I’ve seen focus on observability (logs, traces, dashboards), but not actual enforcement at runtime. Curious how people here are handling this in production: - Are you enforcing hard limits (budget, rate, etc.) or just monitoring? - Do you handle this at the app level or via some middleware/proxy? - Have you built something in-house for this? Feels like an unsolved problem, especially with agents. Would love to hear how others are dealing with it. [help](https://news.ycombinator.com/formatdoc) ![Image 2](https://news.ycombinator.com/s.gif)[](https://news.ycombinator.com/vote?id=47671998&how=up&goto=item%3Fid%3D47671453)[jackycufe](https://news.ycombinator.com/user?id=jackycufe)[57 minutes ago](https://news.ycombinator.com/item?id=47671998) | [next](https://news.ycombinator.com/item?id=47671453#47671692)[[–]](javascript:void(0)) Certainly. I use LiteLLM to get more cache and save more money [reply](https://news.ycombinator.com/reply?id=47671998&goto=item%3Fid%3D47671453%2347671998)\n![Image 3](https://news.ycombinator.com/s.gif) [Guidelines](https://news.ycombinator.com/newsguidelines.html) | [FAQ](https://news.ycombinator.com/newsfaq.html) | [Lists](https://news.ycombinator.com/lists) | [API](https://github.com/HackerNews/API) | [Security](https://news.ycombinator.com/security.html) | [Legal](https://www.ycombinator.com/legal/) | [Apply to YC](https://www.ycombinator.com/apply/) | [Contact](mailto:hn@ycombinator.com) Search:\n",
+    "truncated": false,
+    "error": null
+  },
+  "hn_comments": {
+    "success": true,
+    "story": {
+      "title": "Ask HN: How are you controlling costs and enforcing limits for LLM calls?",
+      "score": 2,
+      "total_comments": 1
+    },
+    "comments": [
+      {
+        "author": "jackycufe",
+        "text": "Certainly. I use LiteLLM to get more cache and save more money",
+        "points": 0,
+        "time": "2026-04-07T07:53:23.000Z"
+      },
+      {
+        "author": "czbinghe",
+        "text": "[dead]",
+        "points": 0,
+        "time": "2026-04-07T07:10:19.000Z"
+      }
+    ]
+  }
+}

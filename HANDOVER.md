@@ -1,8 +1,8 @@
 # LinkedIn Content Machine — Handover Document
 
-> Last updated: 2026-04-06
-> Status: **Full Chrome Replacement Complete** — RSS/API-based research + 6-tag hashtag strategy
-> Decision: Approach C (Evergreen + Trend Mix) — 2 posts daily — 6 hashtags per post
+> Last updated: 2026-04-07
+> Status: **Honest Framing + Full Enforcement** — Topic calendar, 6-tag hashtag, content strategy rewrite
+> Decision: Approach C (Evergreen + Trend Mix) — 2 posts daily — 6 hashtags per post — Mix of content angles for pillar posts
 
 ---
 
@@ -22,10 +22,10 @@ Umar has 1700+ connections but near-zero engagement (3-4 likes). No time to rese
 | Location | Pune, India |
 | Role | Full-Stack Developer @ BuildStudio |
 | Education | BTech CS @ MIT ADT University |
-| Key Projects | OutreachAI (cold email platform), Hostel Mess Management System |
+| Key Projects | OutreachAI (email automation learning project), Hostel Mess Management System (deployed at college), LinkedIn automation system (this project) |
 | Portfolio | umarfarooque.netlify.app |
 | Headline | "Full-Stack Developer | Building Scalable Systems & Backend-Driven Applications" |
-| Positioning | Professional journey + tech mix |
+| Positioning | Professional journey + tech mix + honest building-in-public |
 
 ## Architecture
 
@@ -41,7 +41,7 @@ Umar has 1700+ connections but near-zero engagement (3-4 likes). No time to rese
                   [fetch-research.js script]
                               |
                               v
-              [Research Engine: rank + filter]
+              [Research Engine: rank + filter + topic dedup]
                               |
               [deep-dive.js on #1 topic]
                 (Jina API + HN Firebase)
@@ -64,6 +64,8 @@ Umar has 1700+ connections but near-zero engagement (3-4 likes). No time to rese
                    [Engagement Tracker enters stats]
                             |
                    [Calibration → Post Generator auto-adjusts]
+                            |
+                   [Topic Calendar updates coverage]
 ```
 
 ## Daily Post Structure
@@ -71,7 +73,7 @@ Umar has 1700+ connections but near-zero engagement (3-4 likes). No time to rese
 | Time | Post | Purpose |
 |------|------|---------|
 | Morning | **TREND** — Breaking AI/tech news with unique take | First to market, rides engagement |
-| Later | **PILLAR** — Build/Lesson/Person (rotating) | Show who you are, build authority |
+| Later | **PILLAR** — Build/Lesson/Person/Today's Journey (mix) | Show who you are, build authority |
 
 ## Content Pillars (4)
 
@@ -80,7 +82,31 @@ Umar has 1700+ connections but near-zero engagement (3-4 likes). No time to rese
 3. **The Take** — Opinions on AI/tech trends ("Everyone's wrong about X")
 4. **The Person** — Career journey, authentic life content
 
-Daily rotation through pillars. Post 1 is always trend-anchored.
+**Pillar POST 2 content mix** — not limited to project references:
+1. Today's building journey (what Umar actually worked on today)
+2. Learning lessons from projects (honestly framed)
+3. Tech analysis (opinion pieces with developer perspective)
+4. College dev life (building while studying, career decisions)
+5. Project updates (when genuinely relevant, honestly framed)
+
+No inflated project language. Everything honest, nothing exaggerated.
+
+## Post Writing Rules (2026-04-07 Update)
+
+- 80-150 words MAXIMUM — short and punchy
+- Topic-first, not resume — Umar's voice in 1-2 lines max
+- NEVER mention "Outrier" or "Microspectra"
+- NEVER inflate projects — call prototypes prototypes, not platforms
+- Line break between each idea
+- End with a question, never a hard CTA
+
+### Honest Framing Rules (ADDED 2026-04-07)
+- **Do NOT** call any project a "platform" unless it has paying users
+- **Do NOT** use "production-grade," "at-scale," "enterprise," "revolutionary"
+- **Do NOT** frame learning prototypes as shipped products
+- **Do NOT** name "OutreachAI" as a brand — describe: "an email automation system I'm building"
+- **Say instead**: "Today I built X and realized Y" — daily building IS the content
+- **Say instead**: "Deployed my hostel mess app to real users and watching what breaks"
 
 ## 5 Custom Skills
 
@@ -103,14 +129,6 @@ Daily rotation through pillars. Post 1 is always trend-anchored.
 **Pillar posts:** Use a contrarian opening — challenge a common belief. Max 12 words.
 - ✅ "Everyone tells you to scale first. I wish someone told me to stop."
 - ❌ "I wasted 3 months building the wrong thing."
-
-### Post Writing Rules
-- 80-150 words MAXIMUM — short and punchy
-- Topic-first, not resume — Umar's voice in 1-2 lines max
-- NEVER mention "Outrier" or "Microspectra"
-- BuildStudio can be mentioned (it's Umar's own company)
-- Line break between each idea
-- End with a question, never a hard CTA
 
 ### Research Speed Strategy
 We source from **fresh feeds**, not trending pages:
@@ -146,25 +164,58 @@ Structured data from all sources. No API keys, no credits, no browser needed.
 - Status: Hit-or-miss results. Deferred — text-only posts work fine on LinkedIn for now.
 - Decision: Skip images until we find a reliable solution (Canva API, text-overlay templates, etc.)
 
+### Hashtag Strategy (ENFORCED 2026-04-07)
+Exactly 6 hashtags per post, strict composition:
+- **3 core (always):** `#BuildInPublic #AI #BuildStudio` — first 3 tags, never reordered
+- **2 topic-match:** From 7 mapped categories in `config/style-profile.json` → `topic_hashtags`
+- **1 discovery:** Rotating from pool of 8 in `config/style-profile.json` → `discovery_hashtags`
+
+**Forbidden:** Brand names as hashtags, project names as hashtags, any tag not in the approved dictionaries. Engagement tracker logs per-tag and per-set performance, auto-calibrates preferred/banned after 10+ posts.
+
+### Topic Calendar (BUILT 2026-04-07)
+`data/topics/calendar.json` tracks all posted topics. Rules enforced:
+- **Dedup:** Skip same-topic repeats within 7-day window (keyword matching)
+- **Gap priority:** Under-covered pillars and categories get boosted
+- **Auto-update:** Calendar refreshes after each day's posts with coverage stats
+- **Rotation targets:** Weekly targets for pillar balance (`The Lesson: 3/week, The Person: 3/week`)
+
 ## Original 9 Weaknesses — Status
 
 | # | Problem | Status | Details |
 |---|---------|--------|---------|
-| 1 | **No feedback loop — flying blind** | ✅ FIXED | Engagement tracker (skill 05) built. Multi-dimensional analysis tracks engagement by pillar, hook type, word count, hashtag set, day of week, topic category. System auto-calibrates Post Generator using confidence-weighted calibration. Append-only JSONL database + rolling analysis with confidence levels. Full implementation: `skills/05-engagement-tracker.md`, `data/engagement/`. See HANDOVER.md "The Engagement Feedback Loop" section for complete details. |
+| 1 | **No feedback loop — flying blind** | ✅ FIXED | Engagement tracker (skill 05) built. Multi-dimensional analysis tracks engagement by pillar, hook type, word count, hashtag set, day of week, topic category. System auto-calibrates Post Generator using confidence-weighted calibration. Append-only JSONL database + rolling analysis with confidence levels. Full implementation: `skills/05-engagement-tracker.md`, `data/engagement/`. |
 | 2 | **Research is shallow** | ✅ FIXED | Deep research engine upgraded. Three-phase flow: headline scan → article extraction + comment mining → two-part output (enriched JSON + deep brief markdown). Selects #1 hot topic, reads full article body, mines top 20 HN comments for sentiment/counter-arguments/post angles. For non-HN sources: searches HN for related discussions. Fallback rules for empty/comment-sparse topics. Post Generator now consumes deep brief when available. Full changes: `skills/02-research-engine.md` (Phase 2 + 3 added), `skills/03-post-generator.md` (deep brief integration). Design: `docs/superpowers/specs/2026-04-05-deep-research-design.md`. |
-| 3 | **Personal experience feels generic** | ✅ FIXED | Created `data/personal/experience-brief.md` — a living document extracted from Umar's personal research reports containing specific projects (OutreachAI, BuildStudio, Hostel Mess System, STERL, AI Medical Triage), key decisions (building in college, fast iteration over perfectionism, services + products focus), beliefs (AI replaces coding not problem-solving, speed > perfectionism, ideas cheap vs scale hardest), struggles (moving too fast → incomplete systems, refining vs testing, high-complexity ideas), thinking patterns (root cause first, systems thinking, minimal-human-intervention design), and real context (college life, self-taught path, freelancer mindset). Post Generator now reads this brief and enforces specificity rules: every pillar post must reference specific projects, decisions, or beliefs. Research Engine cross-references the brief for personal connections. Generic language ("I built a platform") replaced with concrete references ("I built OutreachAI, a cold email platform"). Full changes: `data/personal/experience-brief.md`, updated `skills/03-post-generator.md` and `skills/02-research-engine.md`. |
+| 3 | **Personal experience feels generic** | ✅ FIXED + REWRITTEN | Experience brief (`data/personal/experience-brief.md`) completely rewritten with honest framing. Projects described as learning prototypes, not production SaaS. Post Generator rules updated: daily building journey is valid content source, project mentions must be honest ("an email automation system I'm building" not "OutreachAI, a cold email platform"). FORBIDDEN list for inflated language (platform, production-grade, at-scale). Priority order: today's work → real lessons → decisions → beliefs → struggles. |
 | 4 | **No connection analysis** | REMOVED | Network mining via Chrome was removed. The engagement feedback loop (#1) provides superior ground-truth data. |
 | 5 | **Image pipeline is dead weight** | Open | Pollinations gives hit-or-miss results. Deferred. |
 | 6 | **No Google Sheets integration** | Open | Still manual copy-paste. No API integration yet. |
-| 7 | **No topic calendar** | Open | Risk of repeating themes or having gaps. |
-| 8 | **No hashtag strategy** | ✅ FIXED | Three-layer hashtag system: 3 fixed core tags (`#BuildInPublic`, `#AI`, `#BuildStudio`) always present, 2 topic-match tags from dictionary (7 categories mapped), 1 rotating discovery tag from pool of 8. Total 6 per post. Engagement tracker logs per-tag + per-set performance, auto-calibrates preferred/banned lists. |
+| 7 | **No topic calendar** | ✅ FIXED | Topic calendar (`data/topics/calendar.json`) tracks all posted topics with date, pillar, category, headline, keywords, and angle. Research Engine dedups against `recently_used_keywords` (7-day window) — skips same event/product unless hot + new angle. Post Generator reads `gaps.uncovered_pillars` and `gaps.uncovered_categories` to fill coverage holes. Calendar auto-updates with coverage stats, gap analysis, and rotation targets per week. Backfilled with all existing posts. |
+| 8 | **No hashtag strategy** | ✅ FIXED | Three-layer hashtag system: 3 fixed core tags (`#BuildInPublic`, `#AI`, `#BuildStudio`) always present in first 3 positions, 2 topic-match tags from dictionary (7 categories, 14+ options), 1 rotating discovery tag from pool of 8. Total 6 per post — strictly enforced. Only approved hashtags may appear (no brand names, no project names, no fabricated tags). Post Generator skill updated with FORBIDDEN list for invalid hashtags. Engagement tracker logs per-tag + per-set performance, auto-calibrates preferred/banned lists after 10+ posts. Existing posts (Apr 5, Apr 6) retrofixed. |
 | 9 | **No consistency between days** | ✅ Part of #1 | Handled by calibration reports that run every 10 posts. |
+
+## Hashtag Dictionaries
+
+### Core (always, exactly these 3)
+`#BuildInPublic` `#AI` `#BuildStudio`
+
+### Topic-Match (pick 2 from matching category)
+- AI tools, models, APIs → `#AISystems` `#LLM` `#MachineLearning`
+- Developer workflow, code craft → `#SoftwareEngineering` `#DeveloperLife`
+- Products, startups, founding → `#ProductDevelopment` `##Startups` `#FounderJourney`
+- Career, education, journey → `#SelfTaughtDeveloper` `#CareerGrowth`
+- Automation, systems, productivity → `#Automation` `#Productivity`
+- Business ops, SaaS, tech news → `#SaaS` `#TechNews`
+- Opinions, developer economy → `#DeveloperEconomy` `#TechCommunity`
+
+### Discovery (rotate from pool)
+`#FutureOfWork` `#Innovation` `#WebDev` `#OpenSource` `#DeveloperEconomy` `#TechCommunity` `#CodingLife` `#StartupMindset`
 
 ## Data Sources
 
 - `Dataset/` — Full LinkedIn data export (Basic_LinkedInDataExport_04-05-2026.zip)
 - `data/research/` — Daily research output (live news from HN + The Verge)
 - `data/posts/` — All generated posts (JSON format, with full post text + metadata)
+- `data/topics/calendar.json` — Topic tracking, dedup, coverage history
 
 ## File Structure
 
@@ -181,6 +232,8 @@ Structured data from all sources. No API keys, no credits, no browser needed.
 │   ├── research/               # Daily research (YYYY-MM-DD-topics.json)
 │   ├── posts/                  # Daily posts (YYYY-MM-DD-posts.json)
 │   ├── media/                  # Generated images (deferred)
+│   ├── topics/                 # Topic calendar (NEW)
+│   │   └── calendar.json       # Posted topics, coverage, gaps, dedup
 │   └── engagement/             # Feedback loop data
 │       ├── posts-db.jsonl      # Append-only post fingerprints + engagement
 │       ├── engagement-log.json # Multi-dimensional analysis + calibration
@@ -195,8 +248,8 @@ Structured data from all sources. No API keys, no credits, no browser needed.
 │   └── download-images.js      # Pollinations.ai image downloader
 └── skills/
     ├── 01-style-analyzer.md    # Analyzes writing samples
-    ├── 02-research-engine.md   # RSS feeds + Jina/Firebase APIs — no Chrome
-    ├── 03-post-generator.md    # Generates 2 daily posts with 6-tag hashtag strategy
+    ├── 02-research-engine.md   # RSS feeds + Jina/Firebase APIs + topic calendar dedup
+    ├── 03-post-generator.md    # Generates 2 daily posts with 6-tag + honest framing
     ├── 04-content-scheduler.md # Formats for Google Sheets
     └── 05-engagement-tracker.md# Tracks per-tag + per-set engagement, auto-calibrates
 ```
@@ -228,6 +281,7 @@ See `DAILY-WORKFLOW.md` — ~10 minutes per day:
 | HN "New" over HN "Top" | Speed advantage — post before news trends |
 | Brand-name hooks for trends | Named brands = instant context = scroll stop |
 | Contrarian hooks for pillars | Challenge beliefs = tension loop = engagement |
+| Honest project framing | Prototypes as prototypes, daily building as content — no inflation |
 
 ## What's Working Well
 
@@ -235,15 +289,16 @@ See `DAILY-WORKFLOW.md` — ~10 minutes per day:
 - Deep dive API extracts full articles + HN comments automatically (Jina + Firebase)
 - Hook rules are calibrated — posts now have punchy, brand-named openers
 - Short format (80-150 words) matches LinkedIn's sweet spot
-- No employer name-dropping — posts feel like thought leadership, not resumes
 - 6-tag hashtag strategy: 3 core (#BuildInPublic, #AI, #BuildStudio) + 2 topic-match + 1 rotating discovery
-- Network mining (Phase 4) removed — engagement tracker provides superior ground-truth calibration
+- Topic calendar: dedup, gap detection, coverage tracking — no repeats, no blank spots
+- Daily building journey as content: what Umar worked on today = what he posts about tomorrow
+- Honest framing: projects described as learning prototypes, not products
 
 ## What Needs Work
 
 - Google Sheets API integration
 - Consistent image quality (or skip images)
-- Topic calendar
+- Engagement tracking needs live data to calibrate
 
 ---
 

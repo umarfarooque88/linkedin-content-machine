@@ -59,6 +59,14 @@ Read `data/network/network-insights.json` if it exists. Check `insights_availabl
 
 Network calibration is secondary to engagement calibration. If engagement data exists and conflicts with network insights, weight engagement data more heavily (it's your own audience's behavior; network insights are peers' behavior).
 
+### Step 0.75: Read Topic Calendar (always)
+
+Read `data/topics/calendar.json`. Check two things before selecting topics:
+
+**Duplicates check:** Compare today's research topics against `posted_topics` in the calendar. If a topic covers the same event, product, or keyword within the last 7 days (`duplicate_check_window_days`), SKIP it unless the angle is fundamentally different (not just rewording the same event about Perplexity or Anthropic again).
+
+**Gap check:** Look at `gaps.uncovered_pillars` and `gaps.uncovered_categories`. If "The Lesson" or "The Person" hasn't been posted in 7 days, the pillar post (POST 2) MUST use one of those uncovered pillars. If certain categories have 0 coverage, prefer topics that fill those categories.
+
 ### Step 1: Read Inputs
 - Read `config/style-profile.json` for voice constraints and unique angles
 - Read `config/style-profile.json` → `calibration` section for additional learned parameters
@@ -66,6 +74,7 @@ Network calibration is secondary to engagement calibration. If engagement data e
 - Read today's deep brief if it exists: `data/research/YYYY-MM-DD-deep-brief.md`
 - Read `data/personal/experience-brief.md` for Umar's specific projects, decisions, beliefs, and stories
 - Read `config/style-profile.json` → `core_hashtags`, `topic_hashtags`, `discovery_hashtags` for hashtag strategy
+- Read `data/topics/calendar.json` for topic history, gaps, and dedup rules
 - If calibration data exists: apply all calibration_settings overrides from Step 0
 
 **Deep brief priority:** If a deep brief exists for today's date, the #1 hot topic in the research file will have enriched context (`article_summary` + `comment_analysis`). The Post Generator MUST use the deep brief as the PRIMARY context for POST 1. This means:
@@ -75,31 +84,52 @@ Network calibration is secondary to engagement calibration. If engagement data e
 - Use the counter-argument from comments to avoid naive one-sided takes
 - Consider the "gaps in conversation" for a unique angle nobody else is taking
 
-### Step 1.5: Build Hashtag Set (6 tags total)
+### Step 1.5: Build Hashtag Set (6 tags total — STRICT)
 
-Every post gets exactly 6 hashtags:
+Every post gets EXACTLY 6 hashtags. No exceptions. No custom/fabricated tags.
 
-**3 core hashtags (fixed, always):** `#BuildInPublic`, `#AI`, `#BuildStudio` — from `core_hashtags` in style-profile.json. Never changes.
+**IMPORTANT: The ONLY hashtags you may ever use are the ones listed in the three sections below. You MUST NOT invent, improvise, or fabricate hashtags. If a post topic does not map cleanly to a category, pick the closest category and use its tags.**
 
-**2 topic-match hashtags (based on post content):**
+**Step 1.5a — 3 core hashtags (fixed, ALWAYS present, in this exact order):**
+`#BuildInPublic #AI #BuildStudio`
 
-| Map post to ↓ | Pick 2 from → |
+These are from `core_hashtags` in style-profile.json. They appear in EVERY post. Never omit, never reorder.
+
+**Step 1.5b — 2 topic-match hashtags (based on post content category):**
+
+First determine the post's content category, then pick 2 from that category's list:
+
+| Content category | Pick 2 from → |
 |---|---|
-| AI tools, models, API news | `topic_hashtags.ai_tools` (AISystems, LLM, MachineLearning) |
-| Developer workflow, code craft | `topic_hashtags.developer_workflow` (SoftwareEngineering, DeveloperLife) |
-| Products, startups, founding | `topic_hashtags.product_building` (ProductDevelopment, Startups, FounderJourney) |
-| Career, education, journey | `topic_hashtags.career_growth` (SelfTaughtDeveloper, CareerGrowth) |
-| Automation, systems, productivity | `topic_hashtags.automation` (Automation, Productivity) |
-| Business ops, SaaS, tech news | `topic_hashtags.business_ops` (SaaS, TechNews) |
-| Opinions, controversial takes | `topic_hashtags.opinion_takes` (DeveloperEconomy, TechCommunity) |
+| AI tools, models, API news, LLMs | `#AISystems` `#LLM` `#MachineLearning` |
+| Developer workflow, code craft | `#SoftwareEngineering` `#DeveloperLife` |
+| Products, startups, founding | `#ProductDevelopment` `#Startups` `#FounderJourney` |
+| Career, education, self-taught journey | `#SelfTaughtDeveloper` `#CareerGrowth` |
+| Automation, systems, productivity | `#Automation` `#Productivity` |
+| Business ops, SaaS, tech news | `#SaaS` `#TechNews` |
+| Opinions, controversial takes, developer economy | `#DeveloperEconomy` `#TechCommunity` |
 
-Use both if category has 2 tags. Pick 2 most specific if 3+.
+If the category has exactly 2 tags, use both. If it has 3+, pick the 2 most specific to the post content. Never use a hashtag from outside this table.
 
-**1 discovery hashtag (rotating):** Pick from `discovery_hashtags` in style-profile.json. Rotate sequentially — never reuse previous post's discovery tag.
+**Step 1.5c — 1 discovery hashtag (rotating):**
+Pick from `discovery_hashtags` in style-profile.json: `#FutureOfWork` `#Innovation` `#WebDev` `#OpenSource` `#DeveloperEconomy` `#TechCommunity` `#CodingLife` `#StartupMindset`
 
-**Assembly order:** core (3) + topic (2) + discovery (1) = 6 total.
+Rotate sequentially across posts — never reuse the previous post's discovery tag.
 
-**Calibration override:** If `banned_hashtags` exists in engagement-log.json, remove any match. If `preferred_hashtags` exists, include at least one from preferred list.
+**Assembly order (exact, no deviations):**
+```
+#BuildInPublic #AI #BuildStudio #topic_1 #topic_2 #discovery
+```
+
+This equals exactly 6 hashtags. Not 5. Not 7. Exactly 6.
+
+**Calibration override:** If `banned_hashtags` exists in engagement-log.json, remove any banned tag and replace it with the next tag from the same category. If `preferred_hashtags` exists, ensure at least one preferred tag appears in the topic-match slots.
+
+**FORBIDDEN:** Never use hashtags not listed in the tables above. Specifically:
+- Never use brand names as hashtags (e.g., `#Anthropic`, `#Google`, `#OpenAI` are FORBIDDEN)
+- Never use project names as hashtags (e.g., `#OutreachAI`, `#BuildStudio` is only as a core tag)
+- Never use made-up hashtags like `#TechPolicy`, `#CodeReview`, `#DevCommunity`
+- If a hashtag is not in `core_hashtags`, `topic_hashtags`, or `discovery_hashtags` in style-profile.json, it is INVALID
 
 ### Step 2: Generate POST 1 (TREND-ANCHORED)
 Pick the hottest (most urgent, most interesting) topic from today's research.
@@ -178,20 +208,27 @@ Same structure as POST 1, but driven by the pillar topic rather than trends.
 - For "The Person": focus on career decisions, college life, building in public
 - For "The Take": use today's hottest research topic
 
-**Specificity Rules (CRITICAL):**
-Every pillar post MUST reference a specific project, decision, moment, or belief from the experience brief. Vague references like "I built a platform" or "in my experience" are not specific enough.
-- Name actual projects: "OutreachAI" (cold email platform), "BuildStudio" (your company), "Hostel Mess Management System" (deployed at MIT ADT University)
-- Reference real decisions: the choice to build products in college, the decision to iterate fast rather than plan perfectly, the philosophy that ideas are cheap but scale is hardest
-- Include real numbers, timelines, or specific situations when available from the brief
-- If the post is about a technical decision, name what you actually built and why
-- For "The Person" posts, reference real context: college life, self-taught path, managing multiple projects, freelancer mindset
+**Honest Specificity Rules (CRITICAL — do NOT inflate):**
+Every pillar post MUST reference something authentic: a real project (honestly framed), a genuine learning moment, an actual decision, or a real struggle. Do NOT inflate prototypes into products.
 
-**Source your content from the experience brief:**
-Read `data/personal/experience-brief.md` for the full list of Umar's projects, decisions, beliefs, struggles, thinking patterns, and real context.
-- For "The Build": reference specific projects (OutreachAI, Hostel Mess System, BuildStudio) with real architectural decisions and tradeoffs
-- For "The Lesson": draw from the "Struggles & Pattern Recognition" section — moving too fast, refining vs testing, high-complexity ideas
-- For "The Person": use the "Real Context" section — college life, self-taught path, simultaneous projects, freelancer mindset
-- For "The Take": connect opinions from the "Beliefs & Opinions" section to the topic at hand
+**Reference projects honestly:**
+- "I was building an email automation system and learning how SPF records work" NOT "I built OutreachAI, a cold email platform"
+- "Deployed a hostel mess app to real users and saw what actually breaks" NOT "Built a production SaaS"
+- "Today I built X and realized Y" NOT "X is a revolutionary platform"
+
+**What to draw from (in priority order):**
+1. **Today's building** — what Umar actually worked on yesterday/today (this project, a learning experiment, a freelance task)
+2. **Real project lessons** — things that broke, things that worked, honest post-mortems
+3. **College dev decisions** — choosing to code while studying, time tradeoffs, career choices
+4. **Beliefs and opinions** — genuine takes backed by real experience, not hot takes for engagement
+5. **Struggles and patterns** — too many projects at once, refining vs testing, complexity creep
+
+**What NOT to do (FORBIDDEN):**
+- Do NOT call any project a "platform" unless it actually is one with paying users
+- Do NOT use words like "production-grade," "at-scale," "enterprise," "revolutionary"
+- Do NOT frame learning prototypes as shipped products
+- Do NOT name "OutreachAI" like it's a known brand — describe what it does: "an email automation system I'm building"
+- Do NOT use BuildStudio as a credibility anchor — it exists but it's early
 
 ### Step 4: Validate Each Post
 - [ ] Word count within bounds (80-150, or calibrated range)
@@ -203,7 +240,7 @@ Read `data/personal/experience-brief.md` for the full list of Umar's projects, d
 - [ ] **Specificity check**: Post references at least one specific project, decision, belief, or struggle from the experience brief by name. If the post says "I built a platform" without naming which platform or what made it interesting, it fails.
 - [ ] Could it be anyone's post, or does it sound like Umar specifically? If generic, REJECT and rewrite with concrete Umar detail
 - [ ] Hook hook_type matches calibration preference (if set and confidence >= "good")
-- [ ] **Hashtag check**: Post has exactly 6 hashtags (3 core + 2 topic + 1 discovery), no duplicates, no banned tags
+- [ ] **Hashtag check**: Post has EXACTLY 6 hashtags in this order: `#BuildInPublic #AI #BuildStudio` (3 core) + 2 topic-match (from category table in Step 1.5b) + 1 discovery (from step 1.5c). No fabricated, brand-name, project-name, or custom hashtags allowed. No duplicates.
 
 ### Step 5: Write Output to `data/posts/YYYY-MM-DD-posts.json`
 
@@ -219,8 +256,8 @@ Read `data/personal/experience-brief.md` for the full list of Umar's projects, d
       "hook": "The hook line",
       "body": "Everything after hook and before soft CTA",
       "soft_cta": "The closing question/thought",
-      "hashtags": ["#BuildInPublic", "#AI", "#BuildStudio", "#topic_1", "#topic_2", "#discovery"],
-      "topic_category": "ai_tools",
+      "hashtags": ["#BuildInPublic", "#AI", "#BuildStudio", "#AISystems", "#TechNews", "#FutureOfWork"],
+      "topic_category": "business_ops",
       "full_post_text": "Complete post ready for LinkedIn, with line breaks",
       "image_prompt": "Detailed image generation prompt",
       "image_url": null,
@@ -234,7 +271,7 @@ Read `data/personal/experience-brief.md` for the full list of Umar's projects, d
       "hook": "The hook line",
       "body": "Everything after hook and before soft CTA",
       "soft_cta": "The closing question/thought",
-      "hashtags": ["#BuildInPublic", "#AI", "#BuildStudio", "#topic_1", "#topic_2", "#discovery"],
+      "hashtags": ["#BuildInPublic", "#AI", "#BuildStudio", "#ProductDevelopment", "#Startups", "#Innovation"],
       "topic_category": "product_building",
       "full_post_text": "Complete post ready for LinkedIn, with line breaks",
       "image_prompt": "Detailed image generation prompt",

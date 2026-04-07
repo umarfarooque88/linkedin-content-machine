@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "last_updated": "2026-04-07",
+  "posted_topics": [
+    {
+      "date": "2026-04-05",
+      "pillar": "The Take",
+      "headline": "Perplexity sued for sharing conversations with Meta and Google",
+      "topic_category": "opinion_takes",
+      "topic_source": "Perplexity's incognito mode lawsuit with Meta/Google",
+      "keywords": [
+        "AI privacy",
+        "Perplexity",
+        "AI lawsuits",
+        "data sharing",
+        "incognito"
+      ],
+      "angle": "Privacy vs AI model training â€” companies sharing user conversations"
+    },
+    {
+      "date": "2026-04-05",
+      "pillar": "The Build",
+      "headline": "Building an email platform and learning what matters",
+      "topic_category": "product_building",
+      "topic_source": "pillar rotation - building an email platform and learning what matters",
+      "keywords": [
+        "email platform",
+        "OutreachAI",
+        "learning curve",
+        "building products"
+      ],
+      "angle": "What matters when building real email infrastructure vs learning from tutorials"
+    },
+    {
+      "date": "2026-04-06",
+      "pillar": "The Take",
+      "headline": "Anthropic restricts Claude Pro from using AI coding agents",
+      "topic_category": "opinion_takes",
+      "topic_source": "Anthropic blocks Claude Pro subscribers from OpenClaw and other agents",
+      "keywords": [
+        "Anthropic",
+        "Claude",
+        "coding agents",
+        "AI pricing",
+        "subscription limits"
+      ],
+      "angle": "End of cheap AI access for builders â€” subscription vs API tier economics"
+    },
+    {
+      "date": "2026-04-06",
+      "pillar": "The Build",
+      "headline": "Everyone tells you to build it fast",
+      "topic_category": "product_building",
+      "topic_source": "pillar rotation â€” The Build (AI content quality, building products that scale)",
+      "keywords": [
+        "building fast",
+        "OutreachAI",
+        "demo vs production",
+        "testing",
+        "shipping"
+      ],
+      "angle": "Gap between demo and production â€” ship fast but test harder"
+    },
+    {
+      "date": "2026-04-07",
+      "pillar": "The Take",
+      "headline": "How are you controlling costs and enforcing limits for LLM calls?",
+      "topic_category": "ai_tools",
+      "topic_source": "How are you controlling costs and enforcing limits for LLM calls?",
+      "keywords": [
+        "LLM",
+        "cost control",
+        "budget enforcement",
+        "AI infrastructure"
+      ],
+      "angle": "LLM costs are the only thing keeping developers awake right now."
+    },
+    {
+      "date": "2026-04-07",
+      "pillar": "The Lesson",
+      "headline": "pillar rotation - The Lesson (gap-filling)",
+      "topic_category": "career_growth",
+      "topic_source": "pillar rotation - The Lesson (gap-filling)",
+      "keywords": [
+        "ideas are cheap",
+        "BuildStudio",
+        "execution",
+        "scale"
+      ],
+      "angle": "Ideas are cheap. Thats the part nobody tells you."
+    }
+  ],
+  "pillar_coverage_last_7_days": {
+    "The Take": 3,
+    "The Build": 2,
+    "The Lesson": 1,
+    "The Person": 0
+  },
+  "category_coverage_last_7_days": {
+    "ai_tools": 1,
+    "developer_workflow": 0,
+    "career_growth": 1,
+    "automation": 0,
+    "business_ops": 0,
+    "opinion_takes": 2,
+    "product_building": 2
+  },
+  "gaps": {
+    "uncovered_pillars": [
+      "The Person"
+    ],
+    "uncovered_categories": [
+      "developer_workflow",
+      "automation",
+      "business_ops"
+    ],
+    "last_lesson_post": "2026-04-07",
+    "last_person_post": null
+  },
+  "recently_used_keywords": [
+    "budget enforcement",
+    "OutreachAI",
+    "shipping",
+    "building fast",
+    "Claude",
+    "incognito",
+    "demo vs production",
+    "Perplexity",
+    "BuildStudio",
+    "email platform",
+    "AI infrastructure",
+    "subscription limits",
+    "AI privacy",
+    "execution",
+    "cost control",
+    "data sharing",
+    "AI pricing",
+    "scale",
+    "building products",
+    "Anthropic",
+    "testing",
+    "LLM",
+    "coding agents",
+    "AI lawsuits",
+    "ideas are cheap",
+    "learning curve"
+  ],
+  "duplicate_check_window_days": 7,
+  "rotation_targets": {
+    "pillars_per_week": {
+      "The Take": 2,
+      "The Build": 2,
+      "The Lesson": 3,
+      "The Person": 3
+    },
+    "min_categories_per_week": 4
+  }
+}

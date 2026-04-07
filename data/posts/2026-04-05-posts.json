@@ -10,10 +10,18 @@
       "hook": "Perplexity just got sued because incognito mode wasn't actually private.",
       "body": "Users thought they were browsing in stealth. Behind the scenes, emails were being shared with Meta and Google for tracking.\n\nThe trust product is the most fragile component in any tech stack. When it cracks, no amount of engineering talent puts it back together.",
       "soft_cta": "Which tools are you still using because the privacy promise hasn't broken yet?",
-      "hashtags": ["#PrivacyTech", "#AI", "#DataEthics", "#TechRegulation"],
-      "full_post_text": "Perplexity just got sued because incognito mode wasn't actually private.\n\nUsers thought they were browsing in stealth. Behind the scenes, emails were being shared with Meta and Google for tracking.\n\nThe quiet truth everyone misses: incognito never protected you from the service itself. It only kept your browser from remembering what you just agreed to give away.\n\nAfter building email platforms where privacy decisions are baked into every schema and migration route, I can tell you the gap between what a privacy policy says and what the code actually does is often deliberate.\n\nWhich tools are you still using because the privacy promise hasn't broken yet?\n\n#PrivacyTech #AI #DataEthics #TechRegulation",
+      "hashtags": [
+        "#BuildInPublic",
+        "#AI",
+        "#BuildStudio",
+        "#DeveloperEconomy",
+        "#TechCommunity",
+        "#FutureOfWork"
+      ],
+      "full_post_text": "Perplexity just got sued because incognito mode wasn't actually private.\n\nUsers thought they were browsing in stealth. Behind the scenes, emails were being shared with Meta and Google for tracking.\n\nThe quiet truth everyone misses: incognito never protected you from the service itself. It only kept your browser from remembering what you just agreed to give away.\n\nAfter building email platforms where privacy decisions are baked into every schema and migration route, I can tell you the gap between what a privacy policy says and what the code actually does is often deliberate.\n\nWhich tools are you still using because the privacy promise hasn't broken yet?\n\n#BuildInPublic #AI #BuildStudio #DeveloperEconomy #TechCommunity #FutureOfWork",
       "image_prompt": "A large vintage filing cabinet with hundreds of small drawers, each labeled with different app icons and service names. Most drawers are open and spilling out thin translucent paper strips, each carrying tiny email addresses and tracking pixels that drift upward like confetti in a wind tunnel. At the top of the cabinet, a single drawer marked 'incognito' has a heavy brass padlock that has been picked open, its shackle hanging loose. Inside the open drawer is not empty space but a mirror reflecting the tracking pixels back upward. The filing cabinet sits on a scuffed industrial concrete floor under harsh fluorescent strip lighting that casts long parallel shadows across the ground. Color palette: muted sage green cabinet body, warm brass hardware, electric magenta tracking pixels floating in the air, cold white fluorescent light, concrete gray floor. Style: bold editorial illustration with flat color geometry, visible halftone texture, deep shadows, and a slightly low-angle perspective that makes the cabinet feel imposing -- not photorealistic, not stock imagery, not corporate.",
-      "image_url": null
+      "image_url": null,
+      "topic_category": "opinion_takes"
     },
     {
       "id": "post-4",
@@ -23,10 +31,18 @@
       "hook": "The hardest part of building an email platform was not handling millions of messages.",
       "body": "It was deciding which ones actually mattered.\n\nI spent weeks engineering filters, routing logic, spam scoring, priority queues. Everything needed to be fast and nothing could be lost.\n\nThen I watched users interact with it. They didn't care about throughput. They cared about finding the one email from three weeks ago that started with a specific project name.\n\nComplexity that matters is not scale. Complexity that matters is context.\n\nYou don't need a bigger system. You need one that understands what the user is actually looking for.",
       "soft_cta": "The best systems don't process more. They figure out what matters and do less with everything else.",
-      "hashtags": ["#SystemDesign", "#EmailEngineering", "#ProductThinking", "#DeveloperLessons"],
-      "full_post_text": "The hardest part of building an email platform was not handling millions of messages.\n\nIt was deciding which ones actually mattered.\n\nI spent weeks engineering filters, routing logic, spam scoring, priority queues. Everything needed to be fast and nothing could be lost.\n\nThen I watched users interact with it. They didn't care about throughput. They cared about finding the one email from three weeks ago that started with a specific project name.\n\nComplexity that matters is not scale. Complexity that matters is context.\n\nYou don't need a bigger system. You need one that understands what the user is actually looking for.\n\nThe best systems don't process more. They figure out what matters and do less with everything else.\n\n#SystemDesign #EmailEngineering #ProductThinking #DeveloperLessons",
+      "hashtags": [
+        "#BuildInPublic",
+        "#AI",
+        "#BuildStudio",
+        "#ProductDevelopment",
+        "#Startups",
+        "#Innovation"
+      ],
+      "full_post_text": "The hardest part of building an email platform was not handling millions of messages.\n\nIt was deciding which ones actually mattered.\n\nI spent weeks engineering filters, routing logic, spam scoring, priority queues. Everything needed to be fast and nothing could be lost.\n\nThen I watched users interact with it. They didn't care about throughput. They cared about finding the one email from three weeks ago that started with a specific project name.\n\nComplexity that matters is not scale. Complexity that matters is context.\n\nYou don't need a bigger system. You need one that understands what the user is actually looking for.\n\nThe best systems don't process more. They figure out what matters and do less with everything else.\n\n#BuildInPublic #AI #BuildStudio #ProductDevelopment #Startups #Innovation",
       "image_prompt": "A top-down view of a wooden workbench covered in hundreds of scattered paper index cards, each printed with a different email subject line in varying fonts and sizes -- some are tiny and faded like forgotten threads, others are bold and bright with hand-drawn urgency marks like stars and exclamation points. A single bright red string connects five of these cards together in a deliberate pattern across the chaos, while dozens of others lie untouched. In the center of the web of strings sits a small brass desk lamp casting a tight warm cone of light that illuminates only the connected cards and leaves everything else in dramatic shadow. The workbench surface is scarred and stained with ink from years of use, with coffee ring marks visible. Color palette: warm amber lamplight, deep walnut wood, cream and off-white index cards, faded gray and black printed text, vivid crimson connecting strings, brass gold lamp. Style: bold digital editorial illustration with visible brush texture, high contrast lighting, flat geometric shapes, and an overhead composition that emphasizes the single focused narrative threading through noise -- not photorealistic, not corporate stock imagery.",
-      "image_url": null
+      "image_url": null,
+      "topic_category": "product_building"
     }
   ]
 }

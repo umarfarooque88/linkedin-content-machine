@@ -1,91 +1,86 @@
 # Umar Farooque — Experience Brief
 
-> Updated: 2026-04-06 | Source: Personal research reports + project history
+> Updated: 2026-04-07 | Source: Real projects, honest framing
 
-## Active Projects
+## Current Reality
 
-### OutreachAI (Cold Email Platform)
-Cold email automation platform. Handles email infrastructure, contact data management, AI-generated content generation, routing logic, and spam scoring. Built from scratch with real clients. Key challenges: email deliverability, AI content quality validation, data hygiene, deliverability optimization. Real architecture decisions around filters, routing logic, priority queues — built for speed and reliability.
+CS student at MIT ADT University, Pune. Self-taught path, building things while studying. 1700+ LinkedIn connections, 3-4 likes per post currently. Building in public — everything posted is real, nothing is inflated.
 
-### BuildStudio (Self-Founded)
-Personal company positioned as "an execution system to convert ideas into real, functional products." Philosophy: ideas are cheap, making them work is hard, and working on scale is hardest. Not positioning as an agency — positioning as a product-to-execution company.
+## Projects (All Learning Prototypes)
 
-### STERL (Collaboration)
-Collaboration project focused on website development with real business clients.
+### What I'm actively working on
+- Things I'm building right now, today — this is where POST 2 content gets its most authentic material
+- Current projects: LinkedIn automation system, memory/Knowledge management setup, whatever's on the dev desk today
 
-### AI Medical Triage System
-Multilingual medical triage system with advanced NLP. Combines AI with real-world healthcare workflow problems.
+### OutreachAI (Cold Email Learning Project)
+Built an email automation system as a learning project. Explored email infrastructure, deliverability, spam scoring, AI content routing. Not production-grade — a prototype that taught me how email systems actually work, what breaks at scale, and why spam filters exist. Key learning: building something that sends emails is easy. Building something that sends emails that don't hit spam is hard.
 
-### Resume Parser + Job Tracker
-Smart resume parsing and job tracking system using NLP and automation.
+### Hostel Mess Management System (Deployed at College)
+Built a Firebase-app for managing hostel mess — signup, login, notifications, attendance tracking. Had real users (mess members) and saw firsthand what actual users care about vs. what engineers think matters. Most deployed thing I've built.
 
-### Personal AI Assistant
-Personal product concept combining intelligence and automation for daily productivity.
+### Other Things I've Experimented With
+- **AI Medical Triage System** — NLP for healthcare workflow, concept stage
+- **Resume Parser + Job Tracker** — NLP + automation experiment
+- **Personal AI Assistant** — concept combining intelligence layers with daily productivity
+- **STERL** — website dev collaboration with real business clients
 
-## Past Projects & Outcomes
+None of these are launched products. They're projects I've built, learned from, and can speak honestly about.
 
-### Hostel Mess Management System
-Deployed at MIT ADT University. Real clients, real users. Firebase integration, responsive signup/login flows, notifications, attendance tracking. Learned what real users actually care about vs what engineers think matters.
+## Key Decisions & Philosophy
 
-## Key Decisions & Tradeoffs
-
-### Building Products While In College
-Choosing to build real products with real clients while others are studying theory. Creates: practical advantages (real skills, real portfolio, real revenue) but makes the academic and social situation harder.
-
-### Services + Products, Not Just Hobbies
-Moving toward commercial products and services, not just hobby projects. A deliberate shift from "learning to build" to "building to ship."
+### Building While In College
+Choosing to code real things while peers study theory. This gives me actual shipping experience but makes academics harder. That tension is interesting to write about.
 
 ### Fast Iteration Over Perfectionism
-Preferring to build fast, test with real data, iterate. Not over-planning or seeking abstract elegance. Real-world utility > theoretical perfection.
+I build fast, break things, learn what actually works. I'd rather ship a rough prototype than plan a perfect system. The rough stuff teaches more.
 
-### Building Around Messy Real Problems
-Choosing to build around messy, operational workflow problems (email deliverability, hostel management, medical triage) not clean demo problems. Where valuable software actually lives.
+### Moving Toward Products, Not Just Learning
+Shift from "I'm learning to build" to "I'm building to ship." Still early, but intentional about the direction.
+
+### Honest Communication
+No inflating projects. If it's a prototype, call it a prototype. People on LinkedIn spot fake confidence instantly.
+
+## What I'm Learning Right Now (Daily Content Source)
+
+POST 2 can draw from whatever Umar is actually working on that day:
+- Building a LinkedIn content automation system (this project)
+- Setting up Claude memory with Obsidian for knowledge visualization
+- Learning a new framework, tool, or pattern
+- Figuring out email deliverability, API design, database choices
+- Dealing with college + coding time management
+- Freelance work experiences
+- Building something today that didn't exist yesterday
+
+The daily building journey is content. No need to pretend every project is a platform. "Today I built X and realized Y" is more authentic than "X is a revolutionary solution."
 
 ## Beliefs & Opinions
 
-- AI can replace junior developers' coding but not their problem-solving ability
-- Speed matters more than perfectionism in early-stage building
-- Building fast, testing, iterating beats planning perfectly every time
-- Ideas are cheap; making them work is hard; working on scale is hardest
-- Real-world utility > abstract elegance in software
-- Honesty and directness are more valuable than comfort in feedback
-- AI should enable minimal-human-intervention systems — automate the boring, keep judgment calls human
-- The gap between what a privacy policy says and what the code actually does is often deliberate
+- AI replaces coding but not problem-solving
+- Speed > perfectionism in early building
+- Ideas are cheap, execution is hard, scale is hardest
+- Real utility > abstract elegance
+- Minimal human intervention — automate the boring, keep judgment human
+- Privacy policies and actual code often don't match
+- Honest framing beats inflated confidence every time
 
-## Struggles & Pattern Recognition
+## Struggles & Patterns
 
-### Moving Too Fast → Incomplete Systems
-Broad interests and rapid ideation lead to incomplete systems that never harden into fully shipped products. Multiple ambitious projects at once dilute shipping speed.
+- **Too many projects, unfinished systems** — broad interests dilute shipping
+- **Refining architecture instead of testing** — thinking is valuable but can slow validation
+- **Complex ideas** — prototypes look impressive but gap to production-grade is where real engineering lives
+- **Time management** — building multiple things while studying means none of them get full attention
 
-### Refining Instead of Testing
-Tendency to spend time refining the system architecture rather than testing it with real users first. Deep thinking is valuable, but can slow validation.
+## What to Say vs What to Avoid
 
-### High-Complexity Ideas
-Many ideas are inherently complex. Without strict prioritization, they become impressive prototypes that never reach production. The gap between a working demo and a production-grade system is where the real engineering lives.
+**Say (honest, authentic):**
+- "Building an email automation system and learning how SPF records work"
+- "Deployed my hostel mess system to actual users and seeing what breaks"
+- "Trying to build a LinkedIn content system from scratch"
+- "Self-taught, figuring things out by actually building them"
+- "College student who codes at 2am and studies at 2pm"
 
-## Thinking Style
-
-### Root Cause First
-Identifies root causes, not surface symptoms. Finds patterns across different situations and applies them consistently.
-
-### Systems Thinking
-Approaches problems as: symptom → workflow → automation → data layer. Always thinks in terms of complete systems, not isolated features.
-
-### Minimal-Human-Intervention Design
-Wants systems where AI + automation reduce human intervention to only the judgment calls. Everything else should flow automatically.
-
-### Product-Oriented, Not Theory-Oriented
-More interested in whether something works, scales, and can become a usable product than in abstract elegance alone. Unusually product-oriented for a student.
-
-### Directness Over Comfort
-Values honest, direct feedback. Pushes for harder feedback and clearer thinking. Cares more about accuracy than comfort in communication.
-
-## Real Context
-
-- Computer Science student at MIT ADT University, pursuing BTech
-- Self-taught developer path — not traditional CS education only
-- Building multiple projects simultaneously while managing college
-- Freelancer mindset — always open to gigs and collaborations
-- 1700+ LinkedIn connections, currently getting 3-4 likes per post
-- Located in Pune, India
-- Full-stack developer who actually builds with these tools, not just tweets about them
+**Avoid (inflated, fake confidence):**
+- "Cold email platform" (it's a learning project)
+- "Execution system that converts ideas to products" (BuildStudio is a company name, real but early)
+- "Built at scale," "production-grade," "revolutionary"
+- Any framing that sounds like a funded startup

@@ -10,16 +10,18 @@
       "body": "The company updated its terms to block Claude Pro subscribers from using services like OpenClaw, which route your key through third-party coding agents.\n\nEngineers on HN are split. One side: they operate at a loss on subscriptions. Another side: if you built an AI product, you've seen how costs scale — and the $20/month model was always going to crack under API-level usage.\n\nI saw this exact tradeoff building OutreachAI. You choose between cheap access and sustainable pricing. Both feel right until the numbers hit.\n\nThe real question is what happens to developers who can't afford the API tier.",
       "soft_cta": "Are we watching the end of cheap AI access for builders?",
       "hashtags": [
-        "#AI",
-        "#Anthropic",
         "#BuildInPublic",
+        "#AI",
+        "#BuildStudio",
         "#DeveloperEconomy",
-        "#TechPolicy"
+        "#TechCommunity",
+        "#FutureOfWork"
       ],
-      "full_post_text": "Anthropic just made an enemy out of its most important users.\n\nThe company updated its terms to block Claude Pro subscribers from using services like OpenClaw, which route your key through third-party coding agents.\n\nEngineers on HN are split. One side: they operate at a loss on subscriptions. Another side: if you built an AI product, you've seen how costs scale — and the $20/month model was always going to crack under API-level usage.\n\nI saw this exact tradeoff building OutreachAI. You choose between cheap access and sustainable pricing. Both feel right until the numbers hit.\n\nThe real question is what happens to developers who can't afford the API tier.\n\nAre we watching the end of cheap AI access for builders?\n\n#AI #Anthropic #BuildInPublic #DeveloperEconomy #TechPolicy",
+      "full_post_text": "Anthropic just made an enemy out of its most important users.\n\nThe company updated its terms to block Claude Pro subscribers from using services like OpenClaw, which route your key through third-party coding agents.\n\nEngineers on HN are split. One side: they operate at a loss on subscriptions. Another side: if you built an AI product, you've seen how costs scale — and the $20/month model was always going to crack under API-level usage.\n\nI saw this exact tradeoff building OutreachAI. You choose between cheap access and sustainable pricing. Both feel right until the numbers hit.\n\nThe real question is what happens to developers who can't afford the API tier.\n\nAre we watching the end of cheap AI access for builders?\n\n#BuildInPublic #AI #BuildStudio #DeveloperEconomy #TechCommunity #FutureOfWork",
       "image_prompt": "A stark editorial illustration showing a developer sitting at a desk with a laptop, reaching up toward three glowing API keys that float just out of reach above them against a dark navy background. The keys are colored in Anthropic's signature orange gradient, each with a small red 'X' stamp across them. The desk is cluttered with coding notebooks and coffee cups. Bold geometric shapes frame the composition — a large orange rectangle representing the subscription wall separating the developer from the keys. The entire piece uses a flat, modern illustration style with thick outlines and limited color palette of navy blue, orange, white, and red accents.",
       "image_url": "E:\\LinkedIn Automation\\data\\media\\2026-04-06-the-take.png",
-      "word_count": 115
+      "word_count": 115,
+      "topic_category": "opinion_takes"
     },
     {
       "pillar": "The Build",
@@ -31,16 +33,18 @@
       "soft_cta": "Are you building for the demo or for the user?",
       "hashtags": [
         "#BuildInPublic",
-        "#SoftwareEngineering",
+        "#AI",
+        "#BuildStudio",
+        "#ProductDevelopment",
         "#Startups",
-        "#OutreachAI",
-        "#ProductDevelopment"
+        "#Innovation"
       ],
-      "full_post_text": "Everyone tells you to build it fast. Nobody tells you what comes next.\n\nWhen I built OutreachAI, the first version took three weeks. It worked great with the five test clients I fed it. Then we put it in front of real users and everything broke.\n\nTurns out 'move fast and ship' is great for learning what's wrong. Awful for shipping something that works.\n\nThe real engineering lives in that gap — between a demo that impresses your friends and a system that handles 10x the load without falling apart.\n\nI've learned to build differently now. Ship fast, yes. But test harder.\n\nWhat's the gap between your demo and production right now?\n\n#BuildInPublic #SoftwareEngineering #Startups #OutreachAI #ProductDevelopment",
+      "full_post_text": "Everyone tells you to build it fast. Nobody tells you what comes next.\n\nWhen I built OutreachAI, the first version took three weeks. It worked great with the five test clients I fed it. Then we put it in front of real users and everything broke.\n\nTurns out 'move fast and ship' is great for learning what's wrong. Awful for shipping something that works.\n\nThe real engineering lives in that gap — between a demo that impresses your friends and a system that handles 10x the load without falling apart.\n\nI've learned to build differently now. Ship fast, yes. But test harder.\n\nWhat's the gap between your demo and production right now?\n\n#BuildInPublic #AI #BuildStudio #ProductDevelopment #Startups #Innovation",
       "image_prompt": "An editorial flat illustration showing a construction bridge that is half-built over a wide river. The left side of the bridge is complete and clean, with a small developer figure standing on it holding a laptop. The right side of the bridge has a gaping unfinished hole in the middle — you can see the river below. On the right side, a 'DEMO' flag is planted on a neat little hill, while on the left side a 'PRODUCTION' flag stands on a solid foundation. The river below is churning with small bug icons and error symbols. The illustration uses a modern flat style with thick outlines, bold colors: deep green for completed bridge, bright orange for the unfinished gap, blue for the river, and white sky. Minimal, editorial.",
       "image_url": null,
       "word_count": 113,
-      "image_error": "Failed to generate image after retries"
+      "image_error": "Failed to generate image after retries",
+      "topic_category": "product_building"
     }
   ]
 }
