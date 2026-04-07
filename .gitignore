@@ -11,3 +11,12 @@ Dataset/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Secrets + secrets management
+.env
+
+# Dependencies
+node_modules/
+
+# Session files
+---.txt
