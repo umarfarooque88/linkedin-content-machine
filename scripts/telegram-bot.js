@@ -52,7 +52,55 @@ bot.onText(/\/help/, (msg) => {
 /stats    — Log engagement for a pending post
 /status   — Show system status (posted/pending)
 /skip     — Skip today's scheduled generation
+/actions  — Show suggested actions
 /help     — This message`.trim());
+});
+
+bot.onText(/\/actions/, async (msg) => {
+  const chatId = msg.chat.id;
+  const posts = readTodayPosts();
+  const pending = getPendingEngagement();
+
+  let text = `📋 Suggested Actions\n\n`;
+  const keyboard = { inline_keyboard: [] };
+
+  // Primary action based on state
+  if (!posts || !posts.posts || posts.posts.length === 0) {
+    text += `No posts generated for today yet.\n`;
+    keyboard.inline_keyboard.push([{ text: '🔬 Generate Posts', callback_data: 'action_generate' }]);
+  } else if (posts.posts.some(p => p.telegram_status === 'delivered')) {
+    text += `Today's posts have been delivered.\n`;
+    // Add copy buttons for each delivered post
+    const copyRow = posts.posts.map((_, i) => ({
+      text: `📋 Copy Post ${i + 1}`,
+      callback_data: `copy_${todayStr()}_${i}`
+    }));
+    keyboard.inline_keyboard.push(copyRow);
+    text += `\nTap to copy text for LinkedIn.`;
+  } else {
+    text += `Posts are ready but not delivered yet.\n`;
+    keyboard.inline_keyboard.push([{ text: '📨 Deliver Posts Now', callback_data: 'action_deliver' }]);
+  }
+
+  // Stats action if pending
+  if (pending.length > 0) {
+    text += `\n⚠️ ${pending.length} post${pending.length > 1 ? 's' : ''} need engagement stats.\n`;
+    keyboard.inline_keyboard.push([{ text: '📊 Report Stats', callback_data: 'stats_flow' }]);
+  }
+
+  // Secondary actions
+  const secondary = [];
+  secondary.push({ text: '📊 System Status', callback_data: 'action_status' });
+  if (pending.length === 0 && posts && posts.posts) {
+    secondary.push({ text: '⏭️ Skip Today', callback_data: 'action_skip' });
+  }
+  if (secondary.length > 0) {
+    keyboard.inline_keyboard.push(secondary);
+  }
+
+  keyboard.inline_keyboard.push([{ text: '❓ Help', callback_data: 'action_help' }]);
+
+  await bot.sendMessage(chatId, text, { reply_markup: keyboard });
 });
 
 bot.onText(/\/generate/, async (msg) => {
@@ -222,6 +270,61 @@ bot.on('callback_query', async (query) => {
 
   } else if (data.startsWith('stat_')) {
     handleStatsButton(query, data, chatId);
+  } else if (data === 'action_generate') {
+    bot.answerCallbackQuery(query.id);
+    // Trigger generate command programmatically
+    bot.sendMessage(chatId, '🔄 Starting research + post generation...');
+    // We'll call the same logic as /generate by executing the command
+    // Since we can't directly call the handler, we re-run the script
+    bot.sendMessage(chatId, 'Please run /generate manually or the scheduled delivery will handle it.');
+    // For now, just guide user
+
+  } else if (data === 'action_deliver') {
+    bot.answerCallbackQuery(query.id);
+    const posts = readTodayPosts();
+    if (posts && posts.posts) {
+      deliverPosts(chatId, todayStr(), posts.posts);
+    } else {
+      bot.sendMessage(chatId, '⚠️ No posts found. Generate them first with /generate.');
+    }
+
+  } else if (data === 'action_status') {
+    bot.answerCallbackQuery(query.id);
+    // Reuse /status logic inline
+    const today = todayStr();
+    const posts = readTodayPosts();
+    const pending = getPendingEngagement();
+    let text = `📊 System Status — ${formatDate(today)}\n\n`;
+    if (posts && posts.posts) {
+      text += `Today's posts: ${posts.posts.length}\n`;
+      for (let i = 0; i < posts.posts.length; i++) {
+        const p = posts.posts[i];
+        const status = p.telegram_status || 'pending';
+        text += `  POST ${i + 1} (${p.pillar}): ${status}\n`;
+      }
+    } else {
+      text += `Today's posts: Not generated yet\n`;
+    }
+    text += `\nPending engagement: ${pending.length} post${pending.length > 1 ? 's' : ''}`;
+    bot.sendMessage(chatId, text);
+
+  } else if (data === 'action_skip') {
+    bot.answerCallbackQuery(query.id);
+    skipped = true;
+    bot.sendMessage(chatId, "⏭️ Today's scheduled delivery skipped. Use /generate when ready.");
+
+  } else if (data === 'action_help') {
+    bot.answerCallbackQuery(query.id);
+    bot.sendMessage(chatId,
+`🤖 Commands:
+
+/generate — Research + generate today's posts
+/today    — Resend today's posts
+/stats    — Log engagement
+/status   — System status
+/skip     — Skip today
+/actions  — This menu
+/help     — Full help`.trim());
   }
 });
 
