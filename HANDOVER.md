@@ -187,7 +187,7 @@ Exactly 6 hashtags per post, strict composition:
 | 2 | **Research is shallow** | ✅ FIXED | Deep research engine upgraded. Three-phase flow: headline scan → article extraction + comment mining → two-part output (enriched JSON + deep brief markdown). Selects #1 hot topic, reads full article body, mines top 20 HN comments for sentiment/counter-arguments/post angles. For non-HN sources: searches HN for related discussions. Fallback rules for empty/comment-sparse topics. Post Generator now consumes deep brief when available. Full changes: `skills/02-research-engine.md` (Phase 2 + 3 added), `skills/03-post-generator.md` (deep brief integration). Design: `docs/superpowers/specs/2026-04-05-deep-research-design.md`. |
 | 3 | **Personal experience feels generic** | ✅ FIXED + REWRITTEN | Experience brief (`data/personal/experience-brief.md`) completely rewritten with honest framing. Projects described as learning prototypes, not production SaaS. Post Generator rules updated: daily building journey is valid content source, project mentions must be honest ("an email automation system I'm building" not "OutreachAI, a cold email platform"). FORBIDDEN list for inflated language (platform, production-grade, at-scale). Priority order: today's work → real lessons → decisions → beliefs → struggles. |
 | 4 | **No connection analysis** | REMOVED | Network mining via Chrome was removed. The engagement feedback loop (#1) provides superior ground-truth data. |
-| 5 | **Image pipeline is dead weight** | Open | Pollinations gives hit-or-miss results. Deferred. |
+| 5 | **Image pipeline is dead weight** | ⚠️ PARTIAL | Multi-style generator rebuilt (`scripts/generate-images.js`): 4 styles per pillar with short 10-15 word prompts. Editorial illustrations work perfectly (cracked lightbulb with shoots = exact match). Photorealistic workspaces work well. Text-overlay cards: Flux cannot render multi-word text reliably — single 1-2 word text works ~50% of time. Need to either accept text errors on cards or replace text-style with another visual format. Script is live and generates images for every post automatically. |
 | 6 | **No Google Sheets integration** | Open | Still manual copy-paste. No API integration yet. |
 | 7 | **No topic calendar** | ✅ FIXED | Topic calendar (`data/topics/calendar.json`) tracks all posted topics with date, pillar, category, headline, keywords, and angle. Research Engine dedups against `recently_used_keywords` (7-day window) — skips same event/product unless hot + new angle. Post Generator reads `gaps.uncovered_pillars` and `gaps.uncovered_categories` to fill coverage holes. Calendar auto-updates with coverage stats, gap analysis, and rotation targets per week. Backfilled with all existing posts. |
 | 8 | **No hashtag strategy** | ✅ FIXED | Three-layer hashtag system: 3 fixed core tags (`#BuildInPublic`, `#AI`, `#BuildStudio`) always present in first 3 positions, 2 topic-match tags from dictionary (7 categories, 14+ options), 1 rotating discovery tag from pool of 8. Total 6 per post — strictly enforced. Only approved hashtags may appear (no brand names, no project names, no fabricated tags). Post Generator skill updated with FORBIDDEN list for invalid hashtags. Engagement tracker logs per-tag + per-set performance, auto-calibrates preferred/banned lists after 10+ posts. Existing posts (Apr 5, Apr 6) retrofixed. |
@@ -245,7 +245,8 @@ Exactly 6 hashtags per post, strict composition:
 ├── scripts/
 │   ├── fetch-research.js       # RSS feed fetcher — HN + The Verge research data
 │   ├── deep-dive.js            # Article extraction + HN comment mining (Jina + Firebase APIs)
-│   └── download-images.js      # Pollinations.ai image downloader
+│   ├── generate-images.js      # Multi-style image generator (4 styles, flux + flux-realism)
+│   └── download-images.js      # Old version kept for reference
 └── skills/
     ├── 01-style-analyzer.md    # Analyzes writing samples
     ├── 02-research-engine.md   # RSS feeds + Jina/Firebase APIs + topic calendar dedup
@@ -276,7 +277,7 @@ See `DAILY-WORKFLOW.md` — ~10 minutes per day:
 | No auto-posting | Zero ToS risk, still fast |
 | 2 posts per day | Maximum feed presence, faster learning |
 | Google Sheets as hub | Familiar, accessible, organized |
-| Pollinations.ai for images | Free, no API key — but quality is hit-or-miss |
+| Pollinations.ai for images — 4 styles (text card, editorial, photorealistic, abstract) | Free, no API key. Text rendering unreliable (~50%). Editorial illustrations work perfectly. |
 | RSS feeds for research | Structured data, instant, no browser/credits needed |
 | HN "New" over HN "Top" | Speed advantage — post before news trends |
 | Brand-name hooks for trends | Named brands = instant context = scroll stop |

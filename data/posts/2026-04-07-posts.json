@@ -19,9 +19,10 @@
       ],
       "topic_category": "ai_tools",
       "full_post_text": "LLM costs are the only thing keeping developers awake right now.\n\nA thread on HN is asking what production systems use to enforce hard budget caps on LLM calls. Most tools just give you dashboards. Observability is great until the loop runs and your bill jumps 400 percent.\n\nOne answer: LiteLLM for caching. Good start. But caching only helps identical calls. Agents dont make identical calls — they drift, retry, loop differently every invocation.\n\nI dealt with exactly this on OutreachAI. The AI generates content at unpredictable volumes. You cant just set a flat cap or you break the pipeline. You build a budget layer with per-user limits, soft warnings, and fallback tiers.\n\nThe real problem is that agents are non-deterministic and your pricing model assumes they are.\n\nAre you building cost controls or just watching the bill?\n\n\n#BuildInPublic #AI #BuildStudio #AISystems #LLM #WebDev",
-      "image_prompt": "An editorial flat illustration of a developer staring at a laptop screen showing a billing dashboard with numbers climbing rapidly. The screen is framed by red warning triangles. Around the developer are floating coins with dollar signs being sucked upward like a vortex toward a cloud icon. Bold navy blue background with orange and red warning accents. Minimal, modern flat style with thick outlines.",
-      "image_url": null,
-      "word_count": 148
+      "image_prompt": "bold white text \"LLM costs are the only thing keeping developers awake right now.\" on a dark navy to warm orange gradient background clean professional sans-serif typography minimal",
+      "image_url": "E:\\LinkedIn Automation\\data\\media\\2026-04-07-the-take.png",
+      "word_count": 148,
+      "image_style": "text_overlay"
     },
     {
       "pillar": "The Lesson",
@@ -41,9 +42,10 @@
       ],
       "topic_category": "career_growth",
       "full_post_text": "Ideas are cheap. Thats the part nobody tells you.\n\nWhen I started OutreachAI, I had a clear vision of what it should be. Then I built it and realized the hard part wasnt the idea or the code — it was making it work at scale for people who actually send cold email.\n\nI learned that building fast gets you to the truth faster than planning perfectly. Planning tells you what might go wrong. Testing tells you what actually is.\n\nBuildStudio exists because of that lesson. Its not an agency — its an execution system. The only thing that matters is converting ideas into real products that handle real load.\n\nWhat have you built that actually works under pressure?\n\n\n#BuildInPublic #AI #BuildStudio #SelfTaughtDeveloper #CareerGrowth #CodingLife",
-      "image_prompt": "An editorial illustration showing a lightbulb hanging from the ceiling with a price tag reading /usr/bin/bash.01. Below it on the ground sits a massive steel gear mechanism with the word SCALE carved into it. A developer figure stands between them holding a wrench. Bold navy and orange color palette, flat style.",
-      "image_url": null,
-      "word_count": 128
+      "image_prompt": "editorial flat illustration of a cracked lightbulb with green shoots growing from inside on a cream to sage green background thick black outlines bold flat colors minimal white space",
+      "image_url": "E:\\LinkedIn Automation\\data\\media\\2026-04-07-the-lesson.png",
+      "word_count": 128,
+      "image_style": "editorial"
     }
   ]
 }
