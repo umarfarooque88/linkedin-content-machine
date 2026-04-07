@@ -391,4 +391,59 @@ function inferHookType(hookText) {
   return 'bold_statement';
 }
 
+// ============================================================
+// Scheduled Daily Delivery — 10:00 AM IST
+// ============================================================
+
+cron.schedule(`30 ${DAILY_HOUR} * * *`, async () => {
+  // Runs at 10:30 AM IST daily
+  if (skipped) {
+    console.log('  Skipped today delivery');
+    return;
+  }
+
+  const posts = readTodayPosts();
+  if (!posts || !posts.posts || posts.posts.length === 0) {
+    // Try to generate posts now
+    console.log('  No posts found, running generation...');
+    try {
+      await runScript('scripts/fetch-research.js');
+    } catch (err) {
+      console.log(`  Research fetch error: ${err.message}`);
+    }
+
+    // Wait for posts to appear (user may have generated via CLI)
+    // Give it 30 seconds
+    for (let i = 0; i < 6; i++) {
+      await new Promise(r => setTimeout(r, 5000));
+      const check = readTodayPosts();
+      if (check && check.posts && check.posts.length > 0) {
+        console.log('  Posts appeared, delivering...');
+        const chatId = userChatId;
+        if (chatId) {
+          await deliverPosts(chatId, todayStr(), check.posts);
+        }
+        return;
+      }
+    }
+
+    // Still no posts after 30s — notify
+    const chatId = userChatId;
+    if (chatId) {
+      bot.sendMessage(chatId, '⚠️ No posts found at scheduled time. Use /generate to create them manually, or check if the Post Generator skill was run.');
+    }
+    return;
+  }
+
+  console.log(`  Delivering ${posts.posts.length} posts`);
+  const chatId = userChatId;
+  if (chatId) {
+    await deliverPosts(chatId, todayStr(), posts.posts);
+  }
+}, {
+  scheduled: true,
+  timezone: 'Asia/Kolkata'  // IST
+});
+
+console.log('  Cron schedule set: daily at 10:30 AM IST');
 console.log('Bot commands registered. Waiting for messages...');
