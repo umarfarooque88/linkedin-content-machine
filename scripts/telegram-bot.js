@@ -106,21 +106,21 @@ bot.onText(/\/actions/, async (msg) => {
 bot.onText(/\/generate/, async (msg) => {
   bot.sendMessage(msg.chat.id, '🔄 Starting research + post generation...');
   try {
+    // Step 1: Fetch research
     await runScript('scripts/fetch-research.js');
-    bot.sendMessage(msg.chat.id, '✅ Research fetched. Waiting for posts to appear...');
+    bot.sendMessage(msg.chat.id, '✅ Research fetched. Generating posts...');
 
-    // Poll for posts to appear (user may generate via CLI while bot waits)
-    for (let i = 0; i < 12; i++) {
-      await new Promise(r => setTimeout(r, 5000));
-      const posts = readTodayPosts();
-      if (posts && posts.posts && posts.posts.length > 0) {
-        bot.sendMessage(msg.chat.id, `✅ ${posts.posts.length} posts generated. Sending now...`);
-        await deliverPosts(msg.chat.id, todayStr(), posts.posts);
-        return;
-      }
+    // Step 2: Generate posts automatically
+    await runScript('scripts/generate-posts.js');
+    bot.sendMessage(msg.chat.id, '✅ Posts generated. Delivering...');
+
+    // Step 3: Deliver posts
+    const posts = readTodayPosts();
+    if (posts && posts.posts && posts.posts.length > 0) {
+      await deliverPosts(msg.chat.id, todayStr(), posts.posts);
+    } else {
+      bot.sendMessage(msg.chat.id, '❌ Posts not found after generation.');
     }
-
-    bot.sendMessage(msg.chat.id, '⚠️ No posts appeared after 60s. Run the Post Generator skill, then try /generate again.');
   } catch (err) {
     bot.sendMessage(msg.chat.id, `❌ Error: ${err.message}`);
     console.error('Generate error:', err);
