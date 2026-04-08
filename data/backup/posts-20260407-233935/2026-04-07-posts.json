@@ -22,7 +22,8 @@
       "image_prompt": "bold white text \"LLM costs are the only thing keeping developers awake right now.\" on a dark navy to warm orange gradient background clean professional sans-serif typography minimal",
       "image_url": "E:\\LinkedIn Automation\\data\\media\\2026-04-07-the-take.png",
       "word_count": 148,
-      "image_style": "text_overlay"
+      "image_style": "text_overlay",
+      "telegram_status": "reviewed"
     },
     {
       "pillar": "The Lesson",
@@ -45,7 +46,8 @@
       "image_prompt": "editorial flat illustration of a cracked lightbulb with green shoots growing from inside on a cream to sage green background thick black outlines bold flat colors minimal white space",
       "image_url": "E:\\LinkedIn Automation\\data\\media\\2026-04-07-the-lesson.png",
       "word_count": 128,
-      "image_style": "editorial"
+      "image_style": "editorial",
+      "telegram_status": "delivered"
     }
   ]
 }

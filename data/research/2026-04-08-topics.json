@@ -1,0 +1,692 @@
+{
+  "date": "2026-04-08",
+  "raw_items": [
+    {
+      "title": "Temporarily disabling language support on rubygems.org",
+      "url": "https://blog.rubygems.org/2026/04/07/temporarily-disabling-language-support.html",
+      "points": 0,
+      "comment_count": 0,
+      "author": "ciconia",
+      "publishedAt": "Wed, 08 Apr 2026 05:57:50 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Two Years of Valkey",
+      "url": "https://redmonk.com/sogrady/2026/04/06/valkey-at-two/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "gpi",
+      "publishedAt": "Wed, 08 Apr 2026 05:56:25 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Optinum – finds the blind spots AI coding agents systematically miss in PR tests",
+      "url": "https://github.com/anhnguyensynctree/optinum",
+      "points": 0,
+      "comment_count": 0,
+      "author": "nta25297",
+      "publishedAt": "Wed, 08 Apr 2026 05:53:56 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Anatomy of Mercor's Data Breach",
+      "url": "https://share.jotbird.com/restless-steady-riverbend",
+      "points": 0,
+      "comment_count": 0,
+      "author": "generativeai",
+      "publishedAt": "Wed, 08 Apr 2026 05:53:12 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Unlocking cloud inference compute for OpenClaw",
+      "url": "https://news.ycombinator.com/item?id=47685873",
+      "points": 0,
+      "comment_count": 0,
+      "author": "openinfer",
+      "publishedAt": "Wed, 08 Apr 2026 05:51:16 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Improving Interactive In-Context Learning from Natural Language Feedback",
+      "url": "https://arxiv.org/abs/2602.16066",
+      "points": 0,
+      "comment_count": 0,
+      "author": "revv00",
+      "publishedAt": "Wed, 08 Apr 2026 05:48:31 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Russians turn to cat feeders, classifieds, and vacuum cleaners to stay connected",
+      "url": "https://meduza.io/en/feature/2026/04/02/with-telegram-blocked-russians-turn-to-cat-feeders-classifieds-and-robot-vacuum-cleaners-to-stay-connected",
+      "points": 0,
+      "comment_count": 0,
+      "author": "BaudouinVH",
+      "publishedAt": "Wed, 08 Apr 2026 05:47:47 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Under the hood of MDN's new front end",
+      "url": "https://developer.mozilla.org/en-US/blog/mdn-front-end-deep-dive/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "soheilpro",
+      "publishedAt": "Wed, 08 Apr 2026 05:47:11 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Show HN: Voiceplan.it – The New Planning Mode",
+      "url": "https://voiceplan.it/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "elliptic1",
+      "publishedAt": "Wed, 08 Apr 2026 05:43:57 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Energy giant Drax pulls out of UK climate plan",
+      "url": "https://www.politico.eu/article/energy-giant-drax-pulls-out-of-uk-climate-plan/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "leonidasrup",
+      "publishedAt": "Wed, 08 Apr 2026 05:42:40 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "GPU-resident vector database under 300kb",
+      "url": "https://github.com/PsyChip/VEC",
+      "points": 0,
+      "comment_count": 0,
+      "author": "psychip",
+      "publishedAt": "Wed, 08 Apr 2026 05:38:10 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Show HN: I'm trying to get 100 users in 24 hours with this simple idea",
+      "url": "https://buildfeed.co",
+      "points": 0,
+      "comment_count": 0,
+      "author": "moodiverse",
+      "publishedAt": "Wed, 08 Apr 2026 05:37:40 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "\"I started to lose my ability to code\"",
+      "url": "https://thenewstack.io/ai-coding-tools-reckoning/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "MrBuddyCasino",
+      "publishedAt": "Wed, 08 Apr 2026 05:36:16 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Automated penetration testing for SaaS products",
+      "url": "https://pentestpro.app/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "Mhambe",
+      "publishedAt": "Wed, 08 Apr 2026 05:34:43 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Razor1911. A demo 40 years in the making",
+      "url": "https://www.youtube.com/watch?v=Lw4W9V57SKs",
+      "points": 0,
+      "comment_count": 0,
+      "author": "tetrisgm",
+      "publishedAt": "Wed, 08 Apr 2026 05:34:08 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "How the Vision Pro Rollout Inflamed Tensions at Apple",
+      "url": "https://www.wired.com/story/book-excerpt-mutiny-noam-scheiber-apple-vision-pro/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "f_allwein",
+      "publishedAt": "Wed, 08 Apr 2026 05:30:26 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Swish Concurrency Engine",
+      "url": "https://github.com/becls/swish",
+      "points": 0,
+      "comment_count": 0,
+      "author": "NiceAndWarm",
+      "publishedAt": "Wed, 08 Apr 2026 05:28:06 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Acoustic Eavesdropping with Telecom Fiber Optic Cables",
+      "url": "https://www.ndss-symposium.org/ndss-paper/hiding-an-ear-in-plain-sight-on-the-practicality-and-implications-of-acoustic-eavesdropping-with-telecom-fiber-optic-cables/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "Chaucer",
+      "publishedAt": "Wed, 08 Apr 2026 05:27:52 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Does Vinyl Sound Better?",
+      "url": "https://news.harvard.edu/gazette/story/2026/04/does-vinyl-sound-better/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "axiomdata316",
+      "publishedAt": "Wed, 08 Apr 2026 05:24:46 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Introduction to Nintendo DS Programming",
+      "url": "https://www.patater.com/files/projects/manual/manual.html",
+      "points": 0,
+      "comment_count": 0,
+      "author": "medbar",
+      "publishedAt": "Wed, 08 Apr 2026 05:22:42 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Barrington's Theorem for Mortals",
+      "url": "https://briankitano.com/circuit-complexity/expressivity-part-1/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "bkitano19",
+      "publishedAt": "Wed, 08 Apr 2026 05:20:17 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "FitPlan AI – AI that builds your workout plan in seconds",
+      "url": "https://projectgym.org/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "FitPlanAI",
+      "publishedAt": "Wed, 08 Apr 2026 05:14:05 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "A public changelog for product builders to share updates",
+      "url": "https://www.featdrop.com/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "allanhahaha",
+      "publishedAt": "Wed, 08 Apr 2026 05:13:38 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "DevGlish – I mispronounced \"Kubernetes\" for 2 years. So I built this",
+      "url": "https://devglish.com/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "dengjiuhong",
+      "publishedAt": "Wed, 08 Apr 2026 05:09:08 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "EU's Exposed AI Infrastructure",
+      "url": "https://insecurestack.substack.com/p/eus-exposed-ai-infrastructure",
+      "points": 0,
+      "comment_count": 0,
+      "author": "perch56",
+      "publishedAt": "Wed, 08 Apr 2026 05:06:58 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Potential Anthropic Price Increases",
+      "url": "https://news.ycombinator.com/item?id=47685487",
+      "points": 0,
+      "comment_count": 0,
+      "author": "ms_menardi",
+      "publishedAt": "Wed, 08 Apr 2026 05:00:06 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Bay Area Earthquake Showing Up in Sleep Tracking Data",
+      "url": "https://www.santacruzworks.org/news/fullpower-ai-earthquake-boulder-creek",
+      "points": 0,
+      "comment_count": 0,
+      "author": "car",
+      "publishedAt": "Wed, 08 Apr 2026 04:59:56 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Original Apollo 11 TV broadcast",
+      "url": "https://www.youtube.com/watch?v=S9HdPi9Ikhk",
+      "points": 0,
+      "comment_count": 0,
+      "author": "kaycebasques",
+      "publishedAt": "Wed, 08 Apr 2026 04:55:07 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Ducklake Demo",
+      "url": "https://github.com/jeff-skoldberg-gmds/ducklake-demo",
+      "points": 0,
+      "comment_count": 0,
+      "author": "LexSiga",
+      "publishedAt": "Wed, 08 Apr 2026 04:54:14 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Basilisk Collection",
+      "url": "https://suricrasia.online/unfiction/basilisk/",
+      "points": 0,
+      "comment_count": 0,
+      "author": "avaer",
+      "publishedAt": "Wed, 08 Apr 2026 04:43:57 +0000",
+      "source": "",
+      "feed": "hn_new"
+    },
+    {
+      "title": "Ask HN: Is it possible to escape captive portal webview limitations?",
+      "url": "https://news.ycombinator.com/item?id=47685245",
+      "points": 0,
+      "comment_count": 0,
+      "author": "remohexa",
+      "publishedAt": "Wed, 08 Apr 2026 04:27:46 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "AI is structurally trained to lie. I built a protocol to break it",
+      "url": "https://news.ycombinator.com/item?id=47684528",
+      "points": 0,
+      "comment_count": 0,
+      "author": "DaibinThink",
+      "publishedAt": "Wed, 08 Apr 2026 03:05:22 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "The way every agent framework handles MCP is a latent security problem",
+      "url": "https://news.ycombinator.com/item?id=47683498",
+      "points": 0,
+      "comment_count": 0,
+      "author": "An0n_Jon",
+      "publishedAt": "Wed, 08 Apr 2026 01:12:00 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Apple is pissing me off. (rant - Account Settings)",
+      "url": "https://news.ycombinator.com/item?id=47683345",
+      "points": 0,
+      "comment_count": 0,
+      "author": "TechPlasma",
+      "publishedAt": "Wed, 08 Apr 2026 00:55:35 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Ask HN: Is there any tool that can stop LLM calls at runtime (not just monitor)?",
+      "url": "https://news.ycombinator.com/item?id=47683113",
+      "points": 0,
+      "comment_count": 0,
+      "author": "8dazo",
+      "publishedAt": "Wed, 08 Apr 2026 00:26:56 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Ask HN: My Mac decided out of the blue to delete Node. Why?",
+      "url": "https://news.ycombinator.com/item?id=47682659",
+      "points": 0,
+      "comment_count": 0,
+      "author": "JSLegendDev",
+      "publishedAt": "Tue, 07 Apr 2026 23:29:33 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Ask HN: Any advice on 'hacking' Ford lightning?",
+      "url": "https://news.ycombinator.com/item?id=47682294",
+      "points": 0,
+      "comment_count": 0,
+      "author": "iugtmkbdfil834",
+      "publishedAt": "Tue, 07 Apr 2026 22:43:23 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Tool to Export X Bookmarks (Free) & Categorize Them",
+      "url": "https://news.ycombinator.com/item?id=47682013",
+      "points": 0,
+      "comment_count": 0,
+      "author": "xarchive",
+      "publishedAt": "Tue, 07 Apr 2026 22:11:31 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Free models you can use with your OpenClaw (no credit card needed)",
+      "url": "https://news.ycombinator.com/item?id=47681837",
+      "points": 0,
+      "comment_count": 0,
+      "author": "stosssik",
+      "publishedAt": "Tue, 07 Apr 2026 21:55:31 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "GPT 5.4 in practice – Stinks?",
+      "url": "https://news.ycombinator.com/item?id=47681450",
+      "points": 0,
+      "comment_count": 0,
+      "author": "sjt-at-rev",
+      "publishedAt": "Tue, 07 Apr 2026 21:13:36 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Digital Ocean blocked my account",
+      "url": "https://news.ycombinator.com/item?id=47681113",
+      "points": 0,
+      "comment_count": 0,
+      "author": "ugly_munchkin",
+      "publishedAt": "Tue, 07 Apr 2026 20:42:48 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Perplexity Pro Subscription Issues",
+      "url": "https://news.ycombinator.com/item?id=47680900",
+      "points": 0,
+      "comment_count": 0,
+      "author": "gusnews",
+      "publishedAt": "Tue, 07 Apr 2026 20:25:16 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Podcast insights in minutes, not hours",
+      "url": "https://news.ycombinator.com/item?id=47680750",
+      "points": 0,
+      "comment_count": 0,
+      "author": "jprorok",
+      "publishedAt": "Tue, 07 Apr 2026 20:12:09 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Ask HN: How Handle Enterprise Billing?",
+      "url": "https://news.ycombinator.com/item?id=47680653",
+      "points": 0,
+      "comment_count": 0,
+      "author": "thedangler",
+      "publishedAt": "Tue, 07 Apr 2026 20:04:11 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Where are we converging with all AI companies running the same business model",
+      "url": "https://news.ycombinator.com/item?id=47680276",
+      "points": 0,
+      "comment_count": 0,
+      "author": "elmlabs",
+      "publishedAt": "Tue, 07 Apr 2026 19:34:41 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Ask HN: What is the most useful website you've discovered?",
+      "url": "https://news.ycombinator.com/item?id=47680204",
+      "points": 0,
+      "comment_count": 0,
+      "author": "hopefully_can",
+      "publishedAt": "Tue, 07 Apr 2026 19:30:14 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "It's possible US use EMP in Iran",
+      "url": "https://news.ycombinator.com/item?id=47679557",
+      "points": 0,
+      "comment_count": 0,
+      "author": "pajuhaan",
+      "publishedAt": "Tue, 07 Apr 2026 18:40:58 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Is there any 'media' similar to HN? like the minimalist format",
+      "url": "https://news.ycombinator.com/item?id=47679141",
+      "points": 0,
+      "comment_count": 0,
+      "author": "elmlabs",
+      "publishedAt": "Tue, 07 Apr 2026 18:10:45 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Self-Promotion on HN",
+      "url": "https://news.ycombinator.com/item?id=47679119",
+      "points": 0,
+      "comment_count": 0,
+      "author": "denotes",
+      "publishedAt": "Tue, 07 Apr 2026 18:09:21 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Ask HN: What are you working on? (April 2026) (Non AI)",
+      "url": "https://news.ycombinator.com/item?id=47679021",
+      "points": 0,
+      "comment_count": 0,
+      "author": "cousin_it",
+      "publishedAt": "Tue, 07 Apr 2026 18:01:32 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Ask HN: Are You Using Finetuning?",
+      "url": "https://news.ycombinator.com/item?id=47678862",
+      "points": 0,
+      "comment_count": 0,
+      "author": "nate",
+      "publishedAt": "Tue, 07 Apr 2026 17:49:40 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "ShadowStrike Phantom: Open-Source EDR/XDR Platform",
+      "url": "https://news.ycombinator.com/item?id=47678848",
+      "points": 0,
+      "comment_count": 0,
+      "author": "Soocile",
+      "publishedAt": "Tue, 07 Apr 2026 17:48:08 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Ask HN: Why does it look like everyone is abandoning GitHub Copilot?",
+      "url": "https://news.ycombinator.com/item?id=47678650",
+      "points": 0,
+      "comment_count": 0,
+      "author": "fabev",
+      "publishedAt": "Tue, 07 Apr 2026 17:30:44 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Formalizing the \"generative crash\" via inverse reinforcement learning",
+      "url": "https://news.ycombinator.com/item?id=47678414",
+      "points": 0,
+      "comment_count": 0,
+      "author": "abrahamhaskins",
+      "publishedAt": "Tue, 07 Apr 2026 17:12:30 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "How are you managing hooks for Claude Code?",
+      "url": "https://news.ycombinator.com/item?id=47678197",
+      "points": 0,
+      "comment_count": 0,
+      "author": "nivedit-jain",
+      "publishedAt": "Tue, 07 Apr 2026 16:54:51 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Ask HN: How do you promote apps which are vibe coded but has real life usecase?",
+      "url": "https://news.ycombinator.com/item?id=47677971",
+      "points": 0,
+      "comment_count": 0,
+      "author": "faiyaz26",
+      "publishedAt": "Tue, 07 Apr 2026 16:39:19 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Ask HN: What's everyone's API billing stack?",
+      "url": "https://news.ycombinator.com/item?id=47677424",
+      "points": 0,
+      "comment_count": 0,
+      "author": "sigpwned",
+      "publishedAt": "Tue, 07 Apr 2026 16:04:50 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Ask HN: Why isn't Anthropic eating their own dogfood? A Max subscriber's view",
+      "url": "https://news.ycombinator.com/item?id=47677184",
+      "points": 0,
+      "comment_count": 0,
+      "author": "jandoze",
+      "publishedAt": "Tue, 07 Apr 2026 15:50:18 +0000",
+      "source": "",
+      "feed": "hn_ask"
+    },
+    {
+      "title": "Spotify&#8217;s Prompted Playlists can help you find new podcasts to listen to",
+      "url": "https://www.theverge.com/entertainment/908339/spotify-prompted-playlists-podcasts",
+      "points": 0,
+      "comment_count": 0,
+      "author": "Stevie Bonifield",
+      "publishedAt": "2026-04-07T16:13:23-04:00",
+      "source": "",
+      "feed": "verge_ai"
+    },
+    {
+      "title": "A new Anthropic model found security problems &#8216;in every major operating system and web browser&#8217;",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/908114/anthropic-project-glasswing-cybersecurity",
+      "points": 0,
+      "comment_count": 0,
+      "author": "Hayden Field",
+      "publishedAt": "2026-04-07T14:00:00-04:00",
+      "source": "",
+      "feed": "verge_ai"
+    },
+    {
+      "title": "Suno and major music labels reportedly clash over AI music sharing",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/908119/suno-sony-universal-music-ai-disagreement",
+      "points": 0,
+      "comment_count": 0,
+      "author": "Emma Roth",
+      "publishedAt": "2026-04-07T12:21:22-04:00",
+      "source": "",
+      "feed": "verge_ai"
+    },
+    {
+      "title": "Intel will help build Elon Musk’s Terafab AI chip factory",
+      "url": "https://www.theverge.com/transportation/907976/elon-musk-terafab-intel-ai-chip-spacex-tesla",
+      "points": 0,
+      "comment_count": 0,
+      "author": "Andrew J. Hawkins",
+      "publishedAt": "2026-04-07T11:43:17-04:00",
+      "source": "",
+      "feed": "verge_ai"
+    },
+    {
+      "title": "Gemini is making it faster for distressed users to reach mental health resources",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/907842/google-gemini-mental-health-interface-update",
+      "points": 0,
+      "comment_count": 0,
+      "author": "Robert Hart",
+      "publishedAt": "2026-04-07T06:09:57-04:00",
+      "source": "",
+      "feed": "verge_ai"
+    },
+    {
+      "title": "Iran threatens OpenAI’s Stargate data center in Abu Dhabi",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/907427/iran-openai-stargate-datacenter-uae-abu-dhabi-threat",
+      "points": 0,
+      "comment_count": 0,
+      "author": "Emma Roth",
+      "publishedAt": "2026-04-06T11:54:19-04:00",
+      "source": "",
+      "feed": "verge_ai"
+    },
+    {
+      "title": "Cisco CEO Chuck Robbins wants data centers in space",
+      "url": "https://www.theverge.com/podcast/906727/cisco-ceo-chuck-robbins-data-centers-space-ai-elon-musk-interview",
+      "points": 0,
+      "comment_count": 0,
+      "author": "Nilay Patel",
+      "publishedAt": "2026-04-06T11:15:00-04:00",
+      "source": "",
+      "feed": "verge_ai"
+    },
+    {
+      "title": "Suno is a music copyright nightmare",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/906896/sunos-copyright-ai-music-covers",
+      "points": 0,
+      "comment_count": 0,
+      "author": "Terrence O’Brien",
+      "publishedAt": "2026-04-05T12:00:00-04:00",
+      "source": "",
+      "feed": "verge_ai"
+    },
+    {
+      "title": "I let Gemini in Google Maps plan my day and it went surprisingly well",
+      "url": "https://www.theverge.com/tech/907015/gemini-google-maps-hands-on",
+      "points": 0,
+      "comment_count": 0,
+      "author": "Allison Johnson",
+      "publishedAt": "2026-04-05T10:00:00-04:00",
+      "source": "",
+      "feed": "verge_ai"
+    },
+    {
+      "title": "Grammarly’s sloppelganger saga",
+      "url": "https://www.theverge.com/column/906606/grammarly-expert-review-ai-saga",
+      "points": 0,
+      "comment_count": 0,
+      "author": "Stevie Bonifield",
+      "publishedAt": "2026-04-05T08:00:00-04:00",
+      "source": "",
+      "feed": "verge_ai"
+    }
+  ],
+  "feed_status": {
+    "hn_new": true,
+    "hn_ask": true,
+    "hn_top": false,
+    "verge_ai": true
+  },
+  "total_items": 68
+}
